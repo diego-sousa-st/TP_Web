@@ -1,0 +1,37 @@
+.rodape{
+    color: white;
+    background-color: rgb(30, 39, 165);
+    padding: 1%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.space{
+    height: 15.6em;
+}
+
+.image-perfil{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: block;    
+    margin:0 auto;
+}
+
+td{
+    width:30%;
+}
+
+table{
+    margin:5% auto;    
+}
+
+/* uso do modernizr */
+.rodape{
+    box-shadow:0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.no-boxshadow .rodape {
+    border: 1px solid #CCC;
+    border-bottom: 3px solid #CCC;
+}
