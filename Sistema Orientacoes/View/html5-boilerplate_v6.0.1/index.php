@@ -21,8 +21,24 @@
         <!-- css bootsrap -->
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
+
+		<!--script maps-->
+		<!-- <script src="js/maps.js"></script>
+		<script async defer
+  			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbdiXWtxTFuVhqloaVQZ8bKMjfSmKgZ6w&callback=initMap">
+		</script> -->
+
+
+
         <!-- carregamento modernizr-3 -->
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+		<!-- <script>		
+			window.onload = init();
+
+			function init() {
+				initMap();
+			}
+		</script> -->
     </head>
     <body>
         <!--[if lte IE 9]>
@@ -42,9 +58,10 @@
 
         <div class="container">
             <?php
-                include_once("pags/Templates/carrousel.php");
-            ?>
-        </div>
+				include_once("pags/Templates/carrousel.php");
+				include_once("pags/Templates/maps.php")
+            ?>			
+        </div>		
 
         <div class="container col-md-12">
             <?php
@@ -71,6 +88,6 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>		
     </body>
 </html>

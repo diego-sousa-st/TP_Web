@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="./css/carrousel.css">
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide shadowed-box" data-ride="carousel">
     <!-- indicadores -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

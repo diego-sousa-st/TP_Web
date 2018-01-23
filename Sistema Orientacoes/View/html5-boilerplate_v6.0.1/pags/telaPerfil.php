@@ -35,7 +35,7 @@
 		<?php
 			include_once("../../../Controller/VerificaLogado.php");
 			if(!$logou){
-				header("Location: ./pags/telaLoginAluno.php");
+				header("Location: ../pags/telaLoginAluno.php");
 			}            
 		?>   
 		

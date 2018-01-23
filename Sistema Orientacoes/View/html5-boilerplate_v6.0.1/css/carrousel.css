@@ -44,7 +44,8 @@ body {
   }
   /* Since positioning the image, we need to help out the caption */
   .carousel-caption {
-    z-index: 10;
+	z-index: 10;
+	background-color: rgba(0,0,0,.5);
   }
   
   /* Declare heights because of positioning of img element */
@@ -89,7 +90,7 @@ body {
   .featurette-heading {
     font-weight: 300;
     line-height: 1;
-    letter-spacing: -1px;
+	letter-spacing: -1px;	
   }
   
   
@@ -121,7 +122,8 @@ body {
       font-size: 21px;
       line-height: 1.4;      
       /* cor n fica muito boa */
-      /* color: rgb(160, 148, 148); */
+	  /* color: rgb(160, 148, 148); */
+	  text-shadow: 3px 2px 4px rgba(0,0,0,.8);	  
     }
   
     .featurette-heading {
