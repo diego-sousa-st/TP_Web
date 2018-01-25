@@ -50,8 +50,20 @@
           <canvas id="canvas1" class="canvas"></canvas>
           <canvas id="canvas2" class="canvas"></canvas>
         </div>
-        <div class="row col-md-12">
-          <h3>Os desenvolvedores que fazem parte deste projeto são: Diego Sousa e Nechelley Alves</h3>
+        <div class="row col-md-12 text-center bg-warning shadowed-box bordered rounded">
+          <h3>Os desenvolvedores que fazem parte deste projeto são:</h3>
+          <div class="row perfil-about">
+            <h4>Diego Sousa</h4><img src="../img/diego.jpg" alt="Imagem do Desenvolvedor Diego Sousa" class="img-circle img-about">
+            <section>
+              <article>Apaixonado por rock e heavy metal, amante de música, está agora aprendendo a gostar de café.</article>Começou a carreira em desenvolvimento em 2015 e atualmente está atuando como trainee na GT4W.
+            </section>
+          </div>
+          <div class="row perfil-about">
+            <h4>Nechelley Alves</h4><img src="../img/nechelley.jpg" alt="Imagem do Desenvoldedor Nechelley Alves" class="img-circle img-about">
+            <section>
+              <article>Amante de música, fissurado por otimizações de código mas ainda não aprendeu a gostar de café.</article>Começou a carreira em desenvolvimento em 2015 e atualmente está atuando como trainee na Technolog.
+            </section>
+          </div>
         </div>
       </div>
       <footer class="row rodape footer">

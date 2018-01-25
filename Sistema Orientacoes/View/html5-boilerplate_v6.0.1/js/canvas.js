@@ -12,14 +12,16 @@ function drawBalao() {
 		var ctx = canvas.getContext('2d');
 
 		// curva quadratica
+		var y = -25;
+		var x = -25;
 		ctx.beginPath();
-		ctx.moveTo(75, 25);
-		ctx.quadraticCurveTo(25, 25, 25, 62.5);
-		ctx.quadraticCurveTo(25, 100, 50, 100);
-		ctx.quadraticCurveTo(50, 120, 30, 125);
-		ctx.quadraticCurveTo(60, 120, 65, 100);
-		ctx.quadraticCurveTo(125, 100, 125, 62.5);
-		ctx.quadraticCurveTo(125, 25, 75, 25);
+		ctx.moveTo(75+x, 25+y);
+		ctx.quadraticCurveTo(25+x, 25+y, 25+x, 62.5+y);
+		ctx.quadraticCurveTo(25+x, 100+y, 50+x, 100+y);
+		ctx.quadraticCurveTo(50+x, 120+y, 30+x, 125+y);
+		ctx.quadraticCurveTo(60+x, 120+y, 65+x, 100+y);
+		ctx.quadraticCurveTo(125+x, 100+y, 125+x, 62.5+y);
+		ctx.quadraticCurveTo(125+x, 25+y, 75+x, 25+y);
 		ctx.stroke();
 	}
 }

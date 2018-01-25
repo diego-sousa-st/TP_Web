@@ -70,3 +70,26 @@ table{
 	/* width:40%; */
 	/* height:200pt; */ 
 }
+
+/* div que contem informação de cada dev */
+.perfil-about{
+	margin: 4% auto;
+}
+
+/* bordas para caixas */
+.bordered{
+	border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.rounded{
+	border-radius: 5px;
+}
+
+/* imagem sobre nos */
+.img-about{
+	width:20em;
+	height:20em;
+	border: 1px solid rgba(22, 60, 131, 0.377);
+	box-sizing: border-box;
+	margin: 1% auto;
+}
