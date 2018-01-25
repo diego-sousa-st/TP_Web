@@ -15,6 +15,7 @@
         <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Opções<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="https://sig.ufla.br" target="_blank">SIG Ufla</a></li>
+            <li><a href="../pags/sobreNos.php">Sobre nós</a></li>
             <li><a href="../../../Controller/DeslogarAluno.php">Deslogar</a></li>
           </ul>
         </li>

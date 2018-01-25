@@ -35,6 +35,7 @@
               <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Opções<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="https://sig.ufla.br" target="_blank">SIG Ufla</a></li>
+                  <li><a href="../pags/sobreNos.php">Sobre nós</a></li>
                   <li><a href="../../../Controller/DeslogarAluno.php">Deslogar</a></li>
                 </ul>
               </li>
@@ -43,15 +44,29 @@
         </div>
       </nav>
       <div class="container">
-        <div class="form-group">
-          <h3>Grandes vídeos sobre como crescer na carreira acadêmica. Desde casos de sucesso até as coisas mais hilárias que um estudante pode realizar...		</h3>
-          <div class="media">
-            <div class="media-left"><a href="#">						
-                <iframe src="https://www.youtube.com/embed/2NfxvONcboo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item"></iframe></a></div>
+        <div class="row text-center text-success">
+          <h3>Galeria de vídeos</h3>
+        </div>
+        <div id="div-videos-serios" class="row">
+          <div class="col-md-12 col-xs-12">
+            <h4>Grandes vídeos sobre como crescer na carreira acadêmica.		</h4>
+            <div class="thumbnail">
+              <iframe src="https://www.youtube.com/embed/8KupomiwEA4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item shadowed-box"></iframe>
+              <iframe src="https://www.youtube.com/embed/jlq0JGIiby8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item shadowed-box"></iframe>
+              <iframe src="https://www.youtube.com/embed/2NfxvONcboo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item shadowed-box"></iframe>
+              <iframe src="https://youtube.com/embed/9e7GGNw0Dkw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item shadowed-box"></iframe>
+            </div>
           </div>
-          <div class="media">
-            <div class="media-left"><a href="#">						
-                <iframe src="https://youtube.com/embed/pENuvXj0Ymg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item">						</iframe></a></div>
+        </div>
+        <div id="div-videos-engracados" class="row">
+          <div class="col-md-12 col-xs-12">
+            <h4>Vídeos engraçados</h4>
+            <div class="thumbnail">
+              <iframe src="https://youtube.com/embed/pENuvXj0Ymg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item shadowed-box"></iframe>
+              <iframe src="https://youtube.com/embed/7c9KRYBFR_A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item shadowed-box"></iframe>
+              <iframe src="https://www.youtube.com/embed/O37sNe3Svfs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item shadowed-box"></iframe>
+              <iframe src="https://youtube.com/embed/AMatKWNX3LE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video-item shadowed-box"></iframe>
+            </div>
           </div>
         </div>
       </div>

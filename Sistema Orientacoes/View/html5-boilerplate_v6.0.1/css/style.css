@@ -3,7 +3,8 @@
     background-color: rgb(30, 39, 165);
     padding: 1%;
     text-align: center;
-    box-sizing: border-box;
+	box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .space{
@@ -35,18 +36,37 @@ table{
     border: 1px solid #CCC;
     border-bottom: 3px solid #CCC;
 }
-
+/* google maps css */
 #map{
 	width: 100%;
 	height: 40em;
 	margin: 2% auto;
 }
-
+/* geral */
 .shadowed-box{
 	box-shadow:4px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* video css */
 .video-item{
-	width: 300px;
-	height: 300px;
+	width: 45.5%;
+	height: 250pt;
+	margin: 2% 2%;
+	box-sizing: border-box;
+}
+
+#div-videos-engracados{
+	background-color: rgb(118, 177, 224);
+}
+
+#div-videos-serios{
+	background-color: rgb(75, 160, 209);
+}
+
+/* canvas css */
+.canvas{
+	display: block;
+	float: left;
+	/* width:40%; */
+	/* height:200pt; */ 
 }

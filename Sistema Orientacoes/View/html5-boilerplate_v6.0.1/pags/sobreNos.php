@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <!-- carregamento modernizr-3-->
     <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
-    <title>Cadastrar Curso</title>
+    <title>Sobre Nós</title>
+    <script src="../js/canvas.js"></script>
     <body>
       <!-- barra de navegação-->
       <!-- nav-tabs-->
@@ -44,12 +45,14 @@
         </div>
       </nav>
       <div class="container">
-        <form class="container">
-          <div class="form-group">
-            <label for="nomeCurso">Nome:</label>
-            <input id="nomeCurso" type="text" class="form-control">
-          </div>
-        </form>
+        <div class="row col-md-12">
+          <canvas id="canvas0" class="canvas"></canvas>
+          <canvas id="canvas1" class="canvas"></canvas>
+          <canvas id="canvas2" class="canvas"></canvas>
+        </div>
+        <div class="row col-md-12">
+          <h3>Os desenvolvedores que fazem parte deste projeto são: Diego Sousa e Nechelley Alves</h3>
+        </div>
       </div>
       <footer class="row rodape footer">
         <div class="col-md-12">Desenvolvido por Diego Sousa e Nechelley Alves - © 2018.</div>
