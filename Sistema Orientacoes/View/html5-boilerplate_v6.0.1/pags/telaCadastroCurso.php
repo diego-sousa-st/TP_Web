@@ -30,6 +30,14 @@
           <div id="barra-navegacao" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li><a href="../pags/telaPerfil.php">Visualizar Perfil</a></li>
+              <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Cadastrar<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../pags/telaCadastroPesquisa.php">Pesquisa</a></li>
+                  <li><a href="../pags/telaCadastroCurso.php">Curso</a></li>
+                  <li><a href="../pags/telaCadastroInstituicao.php">Instituição</a></li>
+                  <li><a href="../pags/telaCadastroOrientacao.php">Orientação</a></li>
+                </ul>
+              </li>
               <li><a href="../../../Controller/ListarCursos.php">Listar Cursos</a></li>
               <li><a href="./galeriaVideos.php">Vídeos</a></li>
               <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Opções<span class="caret"></span></a>
@@ -44,7 +52,7 @@
         </div>
       </nav>
       <div class="container">
-        <form class="container">
+        <form class="col-md-8">
           <div class="form-group">
             <label for="nomeCurso">Nome:</label>
             <input id="nomeCurso" type="text" class="form-control">
