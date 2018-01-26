@@ -8,6 +8,6 @@
 
 abstract class Forma
 {
-    const presencial = "Presencial";
-    const ead = "EAD";
+	const presencial = "Presencial";
+	const ead = "EAD";
 }

@@ -8,8 +8,8 @@
 
 abstract class Estados
 {
-    const RJ = "RJ";
-    const SP = "SP";
-    const MG = "MG";
-    const ES = "ES";
+	const RJ = "RJ";
+	const SP = "SP";
+	const MG = "MG";
+	const ES = "ES";
 }

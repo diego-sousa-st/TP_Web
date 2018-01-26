@@ -24,7 +24,7 @@
 		<!-- carregamento modernizr-3 -->
 		<script src="../js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- validacao senha -->
-		<script src="../js/validacao.js"></script>		
+		<script src="../js/validacao.js"></script>
 	</head>
 	<body>
 		<!--[if lte IE 9]>
@@ -40,28 +40,29 @@
 			</div>
 
 			<div class="row">
-				<form action="../../../Controller/CadastrarAluno.php" method="post">
+				<form action="../../../Controller/AlunoController.php" method="post">
+					<input type="hidden" name="acao" value="cadastrar">
 					<div class="col-md-4">
 						<h3>Cadastro</h3>
-						
-						<div class="form-group">
-							<label for="nome">Nome</label>              
-							<input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome...">
-						</div>            
 
 						<div class="form-group">
-							<label for="matricula">Matricula</label>              
+							<label for="nome">Nome</label>
+							<input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome...">
+						</div>
+
+						<div class="form-group">
+							<label for="matricula">Matricula</label>
 							<input type="number" class="form-control" name="matricula" id="matricula" placeholder="Digite sua matricula..."
 							min="0" max="999999999">
-						</div>            
+						</div>
 
 						<div class="form-group">
-							<label for="cidade">Cidade</label>              
+							<label for="cidade">Cidade</label>
 							<input type="text" class="form-control" name="cidade" id="cidade" placeholder="Digite o nome da sua cidade...">
-						</div>            
-						
+						</div>
+
 						<div class="form-group">
-							<label for="uf">UF</label>              
+							<label for="uf">UF</label>
 							<!-- <input type="text" class="form-control" name="uf" id="uf" placeholder="Digite seu estado"> -->
 							<select name="uf" class="form-control" id="uf">
 								<option value="MG">MG</option>
@@ -69,23 +70,23 @@
 								<option value="ES">ES</option>
 								<option value="RJ">RJ</option>
 							</select>
-						</div>            
-						
+						</div>
+
 						<div class="form-group">
-							<label for="curso">Curso</label>              
+							<label for="curso">Curso</label>
 							<input type="number" class="form-control" name="curso" id="curso" placeholder="Digite o numero do curso...">
 						</div>
-				
-						<div class="form-group" id="formSenha">              
+
+						<div class="form-group" id="formSenha">
 							<label for="senha">Senha</label>
 							<input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha...">
 						</div>
 
-						<div class="form-group" id="formRedigiteSenha">              
+						<div class="form-group" id="formRedigiteSenha">
 							<label for="redigiteSenha">Repita a Senha</label>
 							<input type="password" class="form-control" name="redigiteSenha" id="redigiteSenha" placeholder="Redigite sua senha...">
 						</div>
-						
+
 						<div class="form-group" id="formImagem">
 							<label for="imagem">Imagem de Perfil:</label>
 							<input type="file" name="imagem" id="imagem" value="Procurar Imagem">
@@ -94,25 +95,25 @@
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">
 							Cadastrar
-							</button>          
+							</button>
 						</div>
 					</div>
 				</form>
 			</div>
-						
+
 		</div>
 
 		<div class="container col-md-12">
 			<?php
-            	include_once("./Templates/rodape.php");
-        	?>
+				include_once("./Templates/rodape.php");
+			?>
 		</div>
 
 
-		
+
 
 		<!-- fim area site -->
-		
+
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
 		<script src="js/plugins.js"></script>
@@ -122,14 +123,14 @@
 		<script>
 			window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
 			ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
-		</script>        
+		</script>
 		<script src="https://www.google-analytics.com/analytics.js" async defer></script>
-		
-		
+
+
 		<!-- jquery que usei com boostrap -->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->				
+		<!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->
 	</body>
 </html>
