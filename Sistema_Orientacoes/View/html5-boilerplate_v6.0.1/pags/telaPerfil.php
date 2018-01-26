@@ -1,3 +1,10 @@
+<?php
+	include_once("../../../Controller/VerificaLogado.php");
+	if(!$logado){
+		header("Location: ../pags/telaLoginAluno.php");
+	}
+
+?>
 <!doctype html>
 <html class="no-js" lang="pt-br">
 	<head>
@@ -32,46 +39,43 @@
 		<!-- Add your site or application content here -->
 		<!-- início área do site -->
 
-		<?php
-			include_once("../../../Controller/VerificaLogado.php");
-			if(!$logou){
-				header("Location: ../pags/telaLoginAluno.php");
-			}            
-		?>   
-		
+
+
 		<div class="container">
-		
-		<table class="table table-striped table-bordered table-hover table-condensed">        
+
+		<table class="table table-striped table-bordered table-hover table-condensed">
 			<tbody>
 				<tr>
 					<td rowspan="6">
 						<img src="../img/fotoPerfil.png" alt="Foto Perfil" class="img-circle image-perfil">
 					</td>
 					<td>Matricula</td>
-					<td>	
-						201510813
-					</td>
+					<td><?= $aluno->matricula ?></td>
 				</tr>
 				<tr>
 					<td>Nome</td>
-					<td>Diego Sosua</td>					
-				</tr>            
+					<td><?= $aluno->nome ?></td>
+				</tr>
 				<tr>
 					<td>Cidade</td>
-					<td>São Tiago</td>					
-				</tr>            
+					<td><?= $aluno->cidade ?></td>
+				</tr>
 				<tr>
 					<td>UF</td>
-					<td>MG</td>					
-				</tr>            
+					<td><?= $aluno->uf ?></td>
+				</tr>
 				<tr>
 					<td>CRA</td>
-					<td>60</td>					
-				</tr>            
+					<td><?= $aluno->cra ?></td>
+				</tr>
 				<tr>
 					<td>Curso</td>
-					<td>10</td>											
-				</tr>  
+					<td><?= $aluno->curso ?></td>
+				</tr>
+				<tr>
+					<td>Sair</td>
+					<td><a href="../../../Controller/DeslogarAluno.php">Sair</a></td>
+				</tr>
 			</tbody>
 		</table>
 
@@ -83,9 +87,9 @@
 				include_once("./Templates/rodape.php");
 			?>
 		</div>
-				
+
 		<!-- fim area site -->
-		
+
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<script>window.jQuery || document.write('<script src="../js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
 		<script src="js/plugins.js"></script>
@@ -95,10 +99,10 @@
 		<script>
 			window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
 			ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
-		</script>        
+		</script>
 		<script src="https://www.google-analytics.com/analytics.js" async defer></script>
-		
-		
+
+
 		<!-- jquery que usei com boostrap -->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

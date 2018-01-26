@@ -13,9 +13,9 @@
 		}
 
 		//Conecta com o banco e recupera informacoes do aluno
-		public static function getAluno($matricula){
+		public static function getAluno($matricula,$senha){
 			//cria a query
-			$query = "SELECT * FROM ALUNO WHERE matricula = {$matricula};";
+			$query = "SELECT * FROM ALUNO WHERE matricula = {$matricula} AND senhaAluno = '{$senha}';";
 
 			//die(print_r($query,true));
 			//executa

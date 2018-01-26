@@ -8,7 +8,7 @@
 
 	$acao = trim($_DADOS['acao']);
 	if(!isset($acao) || $acao == ''){//se houve algum problema na hora de receber a acao
-		?><script>alert('<?php echo $msgSemAcao; ?>');</script><?php
+		?><script>alert('<?= $msgSemAcao; ?>');</script><?php
 		header('Location: ../View/html5-boilerplate_v6.0.1');
 	}
 
@@ -31,13 +31,53 @@
 			if($retorno->status){//se tudo ocorreu bem
 				session_start();
 				$_SESSION['logado'] = true;
-				$_SESSION['aluno'] = $alunoBean;
+				$_SESSION['aluno'] = new stdClass();
+				$_SESSION['aluno']->matricula = $alunoBean->getMatricula();
+				$_SESSION['aluno']->nome = $alunoBean->getNome();
+				$_SESSION['aluno']->cidade = $alunoBean->getCidade();
+				$_SESSION['aluno']->uf = $alunoBean->getUf();
+				$_SESSION['aluno']->curso = $alunoBean->getCurso();
+				$_SESSION['aluno']->cra = 0;
 
 				//redireciona
 				header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php');
 			}else{
 				?><script>alert('Erro ao cadastrar aluno: <?= $retorno->resposta ?>');</script><?php
 				header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaCadastroAluno.php');
+			}
+			break;
+		case 'logar':
+			//ler dados
+			$matricula = $_DADOS['matricula'];
+			$senha = $_DADOS['senha'];
+
+			//executa no banco
+			$retorno = AlunoDao::getAluno($matricula,sha1($senha));
+
+			if($retorno->status){//se tudo ocorreu bem
+				if($retorno->resposta != null){//usuario existe
+					//seta a session
+					session_start();
+					$_SESSION['logado'] = true;
+					$_SESSION['aluno'] = new stdClass();
+					$_SESSION['aluno']->matricula = $retorno->resposta[0]->Matricula;
+					$_SESSION['aluno']->nome = $retorno->resposta[0]->Nome;
+					$_SESSION['aluno']->cidade = $retorno->resposta[0]->Cidade;
+					$_SESSION['aluno']->uf = $retorno->resposta[0]->UF;
+					$_SESSION['aluno']->curso = $retorno->resposta[0]->Curso;
+					$_SESSION['aluno']->cra = $retorno->resposta[0]->CRA;
+					// die(print_r($retorno->resposta[0]->Matricula,true));
+
+					//redireciona
+					header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php');
+				}else{//se o usuario nao existe
+					?><script>alert('Matricula ou senha inválidos!');</script><?php
+					//redireciona
+					header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaLoginAluno.php');
+				}
+			}else{
+				?><script>alert('<?= $retorno->resposta ?>');</script><?php
+				header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaLoginAluno.php');
 			}
 			break;
 	}

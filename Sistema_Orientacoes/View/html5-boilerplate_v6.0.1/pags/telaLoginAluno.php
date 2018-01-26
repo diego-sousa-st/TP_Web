@@ -1,3 +1,10 @@
+<?php
+	include_once("../../../Controller/VerificaLogado.php");
+	if($logado){
+		header("Location: ../pags/telaPerfil.php");
+	}
+
+?>
 <!doctype html>
 <html class="no-js" lang="pt-br">
 	<head>
@@ -38,23 +45,24 @@
 			</div>
 
 			<div class="row">
-				<form action="../../../Controller/LogarAluno.php" method="post">
+				<form action="../../../Controller/AlunoController.php" method="post">
+					<input type="hidden" name="acao" value="logar">
 					<div class="col-md-6">
 						<h3>Logar</h3>
 						<div class="form-group">
-							<label for="matricula">Matricula</label>              
+							<label for="matricula">Matricula</label>
 							<input type="number" class="form-control" name="matricula" id="matricula" placeholder="Digite sua matricula..."
 							min="0" max="999999999">
-						</div>            
+						</div>
 
-						<div class="form-group">              
+						<div class="form-group">
 							<label for="senha">Senha</label>
 							<input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha...">
-						</div>  
+						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">
 							Logar
-							</button>          
+							</button>
 						</div>
 					</div>
 				</form>
@@ -65,8 +73,8 @@
 					</blockquote>
 				</aside>
 			</div>
-						
-		</div>		
+
+		</div>
 
 		<div class="container col-md-12">
 			<div class="space">
@@ -76,10 +84,10 @@
             	include_once("./Templates/rodape.php");
         	?>
 		</div>
-		
+
 
 		<!-- fim area site -->
-		
+
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
 		<script src="js/plugins.js"></script>
@@ -89,10 +97,10 @@
 		<script>
 			window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
 			ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
-		</script>        
+		</script>
 		<script src="https://www.google-analytics.com/analytics.js" async defer></script>
-		
-		
+
+
 		<!-- jquery que usei com boostrap -->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
