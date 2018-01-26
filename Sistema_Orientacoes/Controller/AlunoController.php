@@ -40,7 +40,7 @@
 				$_SESSION['aluno']->cra = 0;
 
 				//redireciona
-				header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php');
+				header('Location: ../View/html5-boilerplate_v6.0.1/');
 			}else{
 				?>
 					<script>
@@ -73,7 +73,7 @@
 					// die(print_r($retorno->resposta[0]->Matricula,true));
 
 					//redireciona
-					header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php');
+					header('Location: ../View/html5-boilerplate_v6.0.1/');
 				}else{//se o usuario nao existe
 					?>
 						<script>

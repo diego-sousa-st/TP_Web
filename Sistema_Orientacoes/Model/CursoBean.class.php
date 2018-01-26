@@ -6,7 +6,7 @@
  * Time: 02:17
  */
 
-class Curso
+class CursoBean
 {
 	private $codigo;
 	private $nome;

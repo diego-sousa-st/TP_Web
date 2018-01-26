@@ -1,3 +1,9 @@
+<?php
+	include_once("../../../Controller/VerificaLogado.php");
+	if(!$logado){
+		header("Location: ../pags/telaLoginAluno.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="pt-br" class="no-js">
   <head>
@@ -56,7 +62,8 @@
 	  <div class="col-md-8">
 		<h3>Cadastrar Curso</h3>
 	  </div>
-	  <form id="formCadastroCurso" action="../../../Controller/cadastrarCurso.php" class="col-md-8">
+	  <form id="formCadastroCurso" action="../../../Controller/CursoController.php" class="col-md-8" method="post">
+		  <input type="hidden" name="acao" value="cadastrar">
 		<div class="form-group">
 		  <label for="nomeCurso">Nome:</label>
 		  <input id="nomeCurso" type="text" name="nomeCurso" maxlength="45" required class="form-control">

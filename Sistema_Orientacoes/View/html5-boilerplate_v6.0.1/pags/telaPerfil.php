@@ -3,7 +3,6 @@
 	if(!$logado){
 		header("Location: ../pags/telaLoginAluno.php");
 	}
-
 ?>
 <!doctype html>
 <html class="no-js" lang="pt-br">
