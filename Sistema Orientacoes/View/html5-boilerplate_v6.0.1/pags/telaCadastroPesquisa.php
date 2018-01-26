@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <!-- carregamento modernizr-3-->
     <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
-    <title>Sobre Nós</title>
-    <script src="../js/canvas.js"></script>
+    <title>Cadastrar Pesquisa</title>
   </head>
   <body>
     <!-- barra de navegação-->
@@ -54,26 +53,24 @@
       </div>
     </nav>
     <div class="container">
-      <div class="row col-md-12">
-        <canvas id="canvas0" class="canvas"></canvas>
-        <canvas id="canvas1" class="canvas"></canvas>
-        <canvas id="canvas2" class="canvas"></canvas>
+      <div class="col-md-8">
+        <h3>Cadastar Pesquisa</h3>
+        <!-- o id do professor é igual o do professor logado no momento-->
       </div>
-      <div class="row col-md-12 text-center bg-warning shadowed-box bordered rounded">
-        <h3>Os desenvolvedores que fazem parte deste projeto são:</h3>
-        <div class="row perfil-about">
-          <h4>Diego Sousa</h4><img src="../img/diego.jpg" alt="Imagem do Desenvolvedor Diego Sousa" class="img-circle img-about">
-          <section>
-            <article>Apaixonado por rock e heavy metal, amante de música, está agora aprendendo a gostar de café.</article>Começou a carreira em desenvolvimento em 2015 e atualmente está atuando como trainee na GT4W.
-          </section>
+      <form id="formCadastroPesquisa" action="../../../Controller/cadastrarPesquisa.php" class="col-md-8">
+        <div class="form-group">
+          <label for="area">Área:				</label>
+          <!-- preencher a area com dados do banco-->
+          <select id="area" name="area" required class="form-control"></select>
         </div>
-        <div class="row perfil-about">
-          <h4>Nechelley Alves</h4><img src="../img/nechelley.jpg" alt="Imagem do Desenvoldedor Nechelley Alves" class="img-circle img-about">
-          <section>
-            <article>Amante de música, fissurado por otimizações de código mas ainda não aprendeu a gostar de café.</article>Começou a carreira em desenvolvimento em 2015 e atualmente está atuando como trainee na Technolog.
-          </section>
+        <div class="form-group">
+          <label for="linhaPesquisa">Linha de pesquisa:</label>
+          <input id="linhaPesquisa" type="text" name="linhaPesquisa" maxlength="75" required class="form-control">
         </div>
-      </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Cadastrar Pesquisa</button>
+        </div>
+      </form>
     </div>
     <footer class="row rodape footer">
       <div class="col-md-12">Desenvolvido por Diego Sousa e Nechelley Alves - © 2018.</div>

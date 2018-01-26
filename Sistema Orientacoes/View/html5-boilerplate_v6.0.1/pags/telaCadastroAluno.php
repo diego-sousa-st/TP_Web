@@ -24,8 +24,7 @@
 		<!-- carregamento modernizr-3 -->
 		<script src="../js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- validacao senha -->
-		<script src="../js/validacao.js"></script>
-		
+		<script src="../js/validacao.js"></script>		
 	</head>
 	<body>
 		<!--[if lte IE 9]>
@@ -64,7 +63,7 @@
 						<div class="form-group">
 							<label for="uf">UF</label>              
 							<!-- <input type="text" class="form-control" name="uf" id="uf" placeholder="Digite seu estado"> -->
-							<select name="uf" id="uf" class="form-control" id="uf">
+							<select name="uf" class="form-control" id="uf">
 								<option value="MG">MG</option>
 								<option value="SP">SP</option>
 								<option value="ES">ES</option>
@@ -85,7 +84,12 @@
 						<div class="form-group" id="formRedigiteSenha">              
 							<label for="redigiteSenha">Repita a Senha</label>
 							<input type="password" class="form-control" name="redigiteSenha" id="redigiteSenha" placeholder="Redigite sua senha...">
-						</div>  
+						</div>
+						
+						<div class="form-group" id="formImagem">
+							<label for="imagem">Imagem de Perfil:</label>
+							<input type="file" name="imagem" id="imagem" value="Procurar Imagem">
+						</div>
 
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">
@@ -126,20 +130,6 @@
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->		
-
-		<script>
-			function vericarSuporte() {
-				Modernizr.on('flash', function( result ) {
-					if (result) {
-						alert("O broser suporta flash!");
-						//código 1
-					} else {
-						alert("O broser não suporta flash!");
-						//código 2
-					}
-				});
-			}						
-		</script>
+		<!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->				
 	</body>
 </html>

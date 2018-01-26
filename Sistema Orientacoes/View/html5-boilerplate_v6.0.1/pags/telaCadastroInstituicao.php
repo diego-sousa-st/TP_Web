@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <!-- carregamento modernizr-3-->
     <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
-    <title>Sobre Nós</title>
-    <script src="../js/canvas.js"></script>
+    <title>Cadastrar Instituição</title>
   </head>
   <body>
     <!-- barra de navegação-->
@@ -54,26 +53,34 @@
       </div>
     </nav>
     <div class="container">
-      <div class="row col-md-12">
-        <canvas id="canvas0" class="canvas"></canvas>
-        <canvas id="canvas1" class="canvas"></canvas>
-        <canvas id="canvas2" class="canvas"></canvas>
+      <div class="col-md-8">
+        <h3>Cadastar Instituição			</h3>
       </div>
-      <div class="row col-md-12 text-center bg-warning shadowed-box bordered rounded">
-        <h3>Os desenvolvedores que fazem parte deste projeto são:</h3>
-        <div class="row perfil-about">
-          <h4>Diego Sousa</h4><img src="../img/diego.jpg" alt="Imagem do Desenvolvedor Diego Sousa" class="img-circle img-about">
-          <section>
-            <article>Apaixonado por rock e heavy metal, amante de música, está agora aprendendo a gostar de café.</article>Começou a carreira em desenvolvimento em 2015 e atualmente está atuando como trainee na GT4W.
-          </section>
+      <form id="formCadastroInstituicao" action="../../../Controller/cadastrarInstituicao.php" class="col-md-8">
+        <div class="form-group">
+          <label for="nomeInstituicao">Nome da Instituição:				</label>
+          <input id="nomeInstituicao" type="text" name="nomeInstituicao" maxlength="45" required class="form-control">
         </div>
-        <div class="row perfil-about">
-          <h4>Nechelley Alves</h4><img src="../img/nechelley.jpg" alt="Imagem do Desenvoldedor Nechelley Alves" class="img-circle img-about">
-          <section>
-            <article>Amante de música, fissurado por otimizações de código mas ainda não aprendeu a gostar de café.</article>Começou a carreira em desenvolvimento em 2015 e atualmente está atuando como trainee na Technolog.
-          </section>
+        <div class="form-group">
+          <label for="siglaPesquisa">Sigla:</label>
+          <input id="siglaPesquisa" type="text" name="siglaPesquisa" maxlength="10" required class="form-control">
         </div>
-      </div>
+        <div class="form-group">
+          <label for="cidade">Cidade:</label>
+          <input id="cidade" type="text" name="cidade" maxlength="30" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="uf">UF:</label>
+          <input id="uf" type="text" name="uf" maxlength="2" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="pais">País:</label>
+          <input id="pais" type="text" name="pais" maxlength="15" class="form-control">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Cadastrar Instituição</button>
+        </div>
+      </form>
     </div>
     <footer class="row rodape footer">
       <div class="col-md-12">Desenvolvido por Diego Sousa e Nechelley Alves - © 2018.</div>

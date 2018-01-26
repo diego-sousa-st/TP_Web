@@ -3,7 +3,8 @@ window.onload = init;
 function init(){
     var areaSenha = document.getElementById("formSenha");
     var areaRedigiteSenha = document.getElementById("formRedigiteSenha");
-    setListeners(areaSenha,areaRedigiteSenha);    
+	setListeners(areaSenha,areaRedigiteSenha);   
+	verificarSuporte();
 }
 
 function setListeners(areaSenha,areaRedigiteSenha) {
@@ -39,4 +40,16 @@ function setListeners(areaSenha,areaRedigiteSenha) {
         var oldClass = "form-group";
         areaRedigiteSenha.setAttribute("class",oldClass+" "+classe);
     });    
+}
+
+function verificarSuporte() {
+	Modernizr.on('flash', function( result ) {
+		if (result) {
+			alert("O browser suporta flash!");
+			//código 1
+		} else {
+			alert("O browser não suporta flash!");
+			//código 2
+		}
+	});
 }

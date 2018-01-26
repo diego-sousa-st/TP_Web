@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <!-- carregamento modernizr-3-->
     <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
-    <title>Sobre Nós</title>
-    <script src="../js/canvas.js"></script>
+    <title>Cadastrar Orientação</title>
   </head>
   <body>
     <!-- barra de navegação-->
@@ -54,26 +53,55 @@
       </div>
     </nav>
     <div class="container">
-      <div class="row col-md-12">
-        <canvas id="canvas0" class="canvas"></canvas>
-        <canvas id="canvas1" class="canvas"></canvas>
-        <canvas id="canvas2" class="canvas"></canvas>
+      <div class="col-md-8">
+        <h3>Cadastrar Orientação			</h3>
       </div>
-      <div class="row col-md-12 text-center bg-warning shadowed-box bordered rounded">
-        <h3>Os desenvolvedores que fazem parte deste projeto são:</h3>
-        <div class="row perfil-about">
-          <h4>Diego Sousa</h4><img src="../img/diego.jpg" alt="Imagem do Desenvolvedor Diego Sousa" class="img-circle img-about">
-          <section>
-            <article>Apaixonado por rock e heavy metal, amante de música, está agora aprendendo a gostar de café.</article>Começou a carreira em desenvolvimento em 2015 e atualmente está atuando como trainee na GT4W.
-          </section>
+      <form id="formCadastroOrientacao" action="../../../Controller/cadastrarOrientacao.php" class="col-md-8">
+        <div class="form-group">
+          <label for="fk_aluno">Aluno:</label>
+          <!-- carregar os alunos disponiveis do banco e colocar nos options do select-->
+          <select id="fk_aluno" name="fk_aluno" required class="form-control"></select>
+          <!--o id professor é igual ao id do prof logado-->
         </div>
-        <div class="row perfil-about">
-          <h4>Nechelley Alves</h4><img src="../img/nechelley.jpg" alt="Imagem do Desenvoldedor Nechelley Alves" class="img-circle img-about">
-          <section>
-            <article>Amante de música, fissurado por otimizações de código mas ainda não aprendeu a gostar de café.</article>Começou a carreira em desenvolvimento em 2015 e atualmente está atuando como trainee na Technolog.
-          </section>
+        <div class="form-group">
+          <label for="fk_instituicao">Instituição:</label>
+          <!-- preencher com options com valores do banco via js-->
+          <select id="fk_instituicao" name="fk_instituicao" required class="form-control"></select>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" name="tipo" class="form-control">
+            <option value="TCC">TCC</option>
+            <option value="TCC-EST">TCC-EST</option>
+            <option value="EST">EST</option>
+            <option value="MONITORIA">MONITORIA</option>
+            <option value="IC">IC</option>
+            <option value="TCC-POS">TCC-POS</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tema">Tema:</label>
+          <input id="tema" type="text" name="tema" maxlength="150" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="inicio">Início:</label>
+          <input id="inicio" type="number" name="inicio" min="2000" maxlength="4" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="fim">Fim:</label>
+          <input id="fim" type="number" name="fim" min="2000" maxlength="4" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="cancelado">Cancelado?:</label>
+          <select id="cancelado" name="cancelado" class="form-control">
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Cadastrar Orientação</button>
+        </div>
+      </form>
     </div>
     <footer class="row rodape footer">
       <div class="col-md-12">Desenvolvido por Diego Sousa e Nechelley Alves - © 2018.</div>
