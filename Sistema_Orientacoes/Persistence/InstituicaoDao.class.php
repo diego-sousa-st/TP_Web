@@ -12,5 +12,15 @@
 			//executa
 			return ProcessaQuery::executarQuery($query);
 		}
+
+		//Conecta com o banco e pega infs
+		public static function getInstituicoesCurso(){
+			//cria a query
+			$query = "SELECT Nome, Sigla FROM Instituicao;";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
 	}
 ?>

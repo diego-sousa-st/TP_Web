@@ -23,6 +23,8 @@
 	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 	<!-- carregamento modernizr-3-->
 	<script src="../js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="../js/telaCadastroCurso.js"></script>
 	<title>Cadastrar Curso</title>
   </head>
   <body>

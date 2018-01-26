@@ -43,5 +43,15 @@
 				<?php
 			}
 			break;
+		case 'getInstituicoesCurso':
+			//executa no banco
+			$retorno = InstituicaoDao::getInstituicoesCurso();
+			for ($i=0; $i < count($retorno->resposta); $i++) {
+				$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
+				$retorno->resposta[$i]->Sigla = utf8_encode($retorno->resposta[$i]->Sigla);
+			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
 	}
 ?>
