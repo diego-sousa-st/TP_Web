@@ -73,8 +73,7 @@
 					<td><?= $aluno->curso ?></td>
 				</tr>
 				<tr>
-					<td>Sair</td>
-					<td><a href="../../../Controller/DeslogarAluno.php">Sair</a></td>
+					<td colspan="3" style="text-align:center"><a href="../../../Controller/DeslogarAluno.php">Deslogar</a></td>
 				</tr>
 			</tbody>
 		</table>

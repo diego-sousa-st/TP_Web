@@ -42,8 +42,12 @@
 				//redireciona
 				header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php');
 			}else{
-				?><script>alert('Erro ao cadastrar aluno: <?= $retorno->resposta ?>');</script><?php
-				header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaCadastroAluno.php');
+				?>
+					<script>
+						alert('Erro ao cadastrar aluno: <?= $retorno->resposta ?>');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroAluno.php");
+					</script>
+				<?php
 			}
 			break;
 		case 'logar':
@@ -71,13 +75,20 @@
 					//redireciona
 					header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php');
 				}else{//se o usuario nao existe
-					?><script>alert('Matricula ou senha inválidos!');</script><?php
-					//redireciona
-					header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaLoginAluno.php');
+					?>
+						<script>
+							alert('Matricula ou senha inválidos!');
+							window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaLoginAluno.php");
+						</script>
+					<?php
 				}
 			}else{
-				?><script>alert('<?= $retorno->resposta ?>');</script><?php
-				header('Location: ../View/html5-boilerplate_v6.0.1/pags/telaLoginAluno.php');
+				?>
+					<script>
+						alert('<?= $retorno->resposta ?>');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaLoginAluno.php");
+					</script>
+				<?php
 			}
 			break;
 	}
