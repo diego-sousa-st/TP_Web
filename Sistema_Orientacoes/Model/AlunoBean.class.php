@@ -9,6 +9,7 @@ class AlunoBean
 	private $cra;
 	private $curso;
 	private $senha;
+	private $img;
 
 	/**
 	 * Aluno constructor.
@@ -19,15 +20,19 @@ class AlunoBean
 	 * @param $curso
 	 * @param $senha
 	 */
-	public function __construct($matricula, $nome, $cidade, $uf, $curso, $senha)
+	public function __construct($matricula, $nome, $cidade, $uf, $curso, $senha, $cra, $img)
 	{
 		$this->matricula = $matricula;
 		$this->nome = $nome;
 		$this->cidade = $cidade;
 		$this->uf = $uf;
-		$this->cra = 0;
+		if($cra != "")
+			$this->cra = $cra;
+		else
+			$this->cra = 0;
 		$this->curso = $curso;
 		$this->senha = $senha;
+		$this->img = $img;
 	}
 
 
@@ -141,6 +146,22 @@ class AlunoBean
 	public function setSenha($senha)
 	{
 		$this->senha = $senha;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getImg()
+	{
+		return $this->img;
+	}
+
+	/**
+	 * @param mixed $img
+	 */
+	public function setImg($img)
+	{
+		$this->img = $img;
 	}
 
 }

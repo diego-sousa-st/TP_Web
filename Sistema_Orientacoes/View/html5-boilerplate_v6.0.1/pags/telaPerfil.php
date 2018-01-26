@@ -46,7 +46,7 @@
 			<tbody>
 				<tr>
 					<td rowspan="6">
-						<img src="../img/fotoPerfil.png" alt="Foto Perfil" class="img-circle image-perfil">
+						<img src="../../../Persistence/FotosPerfil/<?= $aluno->img ?>" alt="Foto Perfil" class="img-circle image-perfil">
 					</td>
 					<td>Matricula</td>
 					<td><?= $aluno->matricula ?></td>

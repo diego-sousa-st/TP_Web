@@ -40,7 +40,7 @@
 			</div>
 
 			<div class="row">
-				<form action="../../../Controller/AlunoController.php" method="post">
+				<form action="../../../Controller/AlunoController.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="acao" value="cadastrar">
 					<div class="col-md-4">
 						<h3>Cadastro</h3>
