@@ -40,7 +40,12 @@
 				$_SESSION['aluno']->cra = 0;
 
 				//redireciona
-				header('Location: ../View/html5-boilerplate_v6.0.1/');
+				?>
+					<script>
+						alert('Aluno cadastrado com sucesso!');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/");
+					</script>
+				<?php
 			}else{
 				?>
 					<script>

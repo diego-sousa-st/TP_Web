@@ -40,7 +40,7 @@
 				?>
 					<script>
 						alert('Erro ao cadastrar orientação: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroCurso.php");
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroOrientacao.php");
 					</script>
 				<?php
 			}

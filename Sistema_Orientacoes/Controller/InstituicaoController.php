@@ -37,7 +37,7 @@
 			}else{
 				?>
 					<script>
-						alert('Erro ao cadastrar Instituição: <?= $retorno->resposta ?>');
+						alert('Erro ao cadastrar instituição: <?= $retorno->resposta ?>');
 						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroInstituicao.php");
 					</script>
 				<?php
