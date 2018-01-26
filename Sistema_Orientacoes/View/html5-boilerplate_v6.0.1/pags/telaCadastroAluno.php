@@ -23,6 +23,8 @@
 
 		<!-- carregamento modernizr-3 -->
 		<script src="../js/vendor/modernizr-3.5.0.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="../js/telaCadastroAluno.js"></script>
 		<!-- validacao senha -->
 		<script src="../js/validacao.js"></script>
 	</head>
@@ -74,7 +76,10 @@
 
 						<div class="form-group">
 							<label for="curso">Curso</label>
-							<input type="number" class="form-control" name="curso" id="curso" placeholder="Digite o numero do curso...">
+							<select class="form-control" name="curso" id="curso">
+								
+							</select>
+							<!-- <input type="number" class="form-control" name="curso" id="curso" placeholder="Digite o numero do curso..."> -->
 						</div>
 
 						<div class="form-group" id="formSenha">

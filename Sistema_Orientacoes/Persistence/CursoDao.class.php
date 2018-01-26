@@ -22,5 +22,15 @@
 			//executa
 			return ProcessaQuery::consultarQuery($query);
 		}
+
+		//Conecta com o banco e recupera informacoes dos cursos
+		public static function getCurso($id){
+			//cria a query
+			$query = "SELECT * FROM Curso  WHERE Codigo = {$id};";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
 	}
 ?>

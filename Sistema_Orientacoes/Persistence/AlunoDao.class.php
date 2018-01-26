@@ -47,5 +47,15 @@
 			//executa
 			return ProcessaQuery::executarQuery($query);
 		}
+
+		//Conecta com o banco e pega infs
+		public static function getCursos(){
+			//cria a query
+			$query = "SELECT Nome, Codigo FROM Curso;";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
 	}
 ?>

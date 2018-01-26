@@ -16,11 +16,11 @@
 	switch($acao){
 		case 'cadastrar':
 			//ler dados
-			$nome = $_POST['nomeCurso'];
-			$codigo = $_POST['codigo'];
-			$instituicao = $_POST['instituicao'];
-			$forma = $_POST['forma'];
-			$sigla = $_POST['siglaCurso'];
+			$nome = $_DADOS['nomeCurso'];
+			$codigo = $_DADOS['codigo'];
+			$instituicao = $_DADOS['instituicao'];
+			$forma = $_DADOS['forma'];
+			$sigla = $_DADOS['siglaCurso'];
 
 			//criar bean
 			$cursoBean = new CursoBean($codigo, $nome, $instituicao, $forma, $sigla);
@@ -42,6 +42,18 @@
 					</script>
 				<?php
 			}
+			break;
+		case 'getCurso':
+			//le dados
+			$id = $_DADOS['id'];
+
+			//executa no banco
+			$retorno = CursoDao::getCurso($id);
+			for ($i=0; $i < count($retorno->resposta); $i++) {
+				$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
+			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
 			break;
 	}
 ?>

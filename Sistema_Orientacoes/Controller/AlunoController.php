@@ -190,5 +190,14 @@
 				<?php
 			}
 			break;
+		case 'getCursos':
+			//executa no banco
+			$retorno = AlunoDao::getCursos();
+			for ($i=0; $i < count($retorno->resposta); $i++) {
+				$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
+			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
 	}
 ?>

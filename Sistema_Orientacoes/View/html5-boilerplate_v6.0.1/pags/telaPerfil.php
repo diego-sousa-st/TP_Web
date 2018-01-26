@@ -29,6 +29,8 @@
 
 		<!-- carregamento modernizr-3 -->
 		<script src="../js/vendor/modernizr-3.5.0.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="../js/telaPerfil.js"></script>
 	</head>
 	<body>
 		<!--[if lte IE 9]>
@@ -69,7 +71,7 @@
 				</tr>
 				<tr>
 					<td>Curso</td>
-					<td><?= $aluno->curso ?></td>
+					<td id="curso" data-id="<?= $aluno->curso ?>"></td>
 				</tr>
 				<tr>
 					<td colspan="3" style="text-align:center"><a href="../../../Controller/DeslogarAluno.php">Deslogar</a></td>
