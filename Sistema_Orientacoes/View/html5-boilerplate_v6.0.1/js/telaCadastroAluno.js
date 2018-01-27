@@ -5,10 +5,10 @@ $(document).ready(function () {
 
 //manda ajax assim q a pagina carregar para pegar as informacoes
 function getCursos(){
-	var url = "../../../Controller/AlunoController.php";
+	var url = "../../../Controller/CursoController.php";
 	//informacoes passadas para a url
 	var req = {
-		acao: 'getCursos'
+		acao: 'getAll'
 	};
 	$.post(url, req, function (data) {
 		var res = JSON.parse(data);

@@ -48,30 +48,30 @@
 			<tbody>
 				<tr>
 					<td rowspan="6">
-						<img src="../../../Persistence/FotosPerfil/<?= $aluno->img ?>" alt="Foto Perfil" class="img-circle image-perfil">
+						<img src="" alt="Foto Perfil" class="img-circle image-perfil" id="img">
 					</td>
 					<td>Matricula</td>
-					<td><?= $aluno->matricula ?></td>
+					<td id="matricula"><?= $aluno ?></td>
 				</tr>
 				<tr>
 					<td>Nome</td>
-					<td><?= $aluno->nome ?></td>
+					<td id="nome"></td>
 				</tr>
 				<tr>
 					<td>Cidade</td>
-					<td><?= $aluno->cidade ?></td>
+					<td id="cidade"></td>
 				</tr>
 				<tr>
 					<td>UF</td>
-					<td><?= $aluno->uf ?></td>
+					<td id="uf"></td>
 				</tr>
 				<tr>
 					<td>CRA</td>
-					<td><?= $aluno->cra ?></td>
+					<td id="cra"></td>
 				</tr>
 				<tr>
 					<td>Curso</td>
-					<td id="curso" data-id="<?= $aluno->curso ?>"></td>
+					<td id="curso"></td>
 				</tr>
 				<tr>
 					<td colspan="3" style="text-align:center"><a href="../../../Controller/DeslogarAluno.php">Deslogar</a></td>

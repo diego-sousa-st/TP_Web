@@ -66,14 +66,7 @@
 			if($retorno->status){//se tudo ocorreu bem
 				session_start();
 				$_SESSION['logado'] = true;
-				$_SESSION['aluno'] = new stdClass();
-				$_SESSION['aluno']->matricula = $alunoBean->getMatricula();
-				$_SESSION['aluno']->nome = $alunoBean->getNome();
-				$_SESSION['aluno']->cidade = $alunoBean->getCidade();
-				$_SESSION['aluno']->uf = $alunoBean->getUf();
-				$_SESSION['aluno']->curso = $alunoBean->getCurso();
-				$_SESSION['aluno']->cra = $alunoBean->getCra();
-				$_SESSION['aluno']->img = $alunoBean->getImg();
+				$_SESSION['aluno'] = $matricula;
 
 				//Faz upload da imagem
 				if($nomeImg != "fotoPerfil.png"){
@@ -110,15 +103,7 @@
 					//seta a session
 					session_start();
 					$_SESSION['logado'] = true;
-					$_SESSION['aluno'] = new stdClass();
-					$_SESSION['aluno']->matricula = $retorno->resposta[0]->Matricula;
-					$_SESSION['aluno']->nome = $retorno->resposta[0]->Nome;
-					$_SESSION['aluno']->cidade = $retorno->resposta[0]->Cidade;
-					$_SESSION['aluno']->uf = $retorno->resposta[0]->UF;
-					$_SESSION['aluno']->curso = $retorno->resposta[0]->Curso;
-					$_SESSION['aluno']->cra = $retorno->resposta[0]->CRA;
-					$_SESSION['aluno']->img = $retorno->resposta[0]->imagemAluno;
-					// die(print_r($retorno->resposta[0]->Matricula,true));
+					$_SESSION['aluno'] = $matricula;
 
 					//redireciona
 					header('Location: ../View/html5-boilerplate_v6.0.1/');
@@ -262,21 +247,6 @@
 				$retorno->resposta[0]->Nome = utf8_encode($retorno->resposta[0]->Nome);
 				$retorno->resposta[0]->Cidade = utf8_encode($retorno->resposta[0]->Cidade);
 				$retorno->resposta[0]->UF = utf8_encode($retorno->resposta[0]->UF);
-			}
-			// die(print_r($retorno,true));
-			echo json_encode($retorno);
-			break;
-		case 'getCursos':
-			//executa no banco
-			require_once("../Persistence/CursoDao.class.php");
-			$retorno = CursoDao::getAll();
-			if($retorno->status){//se tudo ocorreu bem
-				for ($i=0; $i < count($retorno->resposta); $i++) {
-					$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
-					$retorno->resposta[$i]->Instituicao = utf8_encode($retorno->resposta[$i]->Instituicao);
-					$retorno->resposta[$i]->forma = utf8_encode($retorno->resposta[$i]->forma);
-					$retorno->resposta[$i]->Sigla = utf8_encode($retorno->resposta[$i]->Sigla);
-				}
 			}
 			// die(print_r($retorno,true));
 			echo json_encode($retorno);
