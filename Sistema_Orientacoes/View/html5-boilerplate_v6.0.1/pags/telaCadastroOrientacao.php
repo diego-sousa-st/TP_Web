@@ -67,12 +67,6 @@
 		  <!--o id professor é igual ao id do prof logado-->
 		</div>
 		<div class="form-group">
-		  <label for="fk_instituicao">Instituição:</label>
-		  <!-- preencher com options com valores do banco via js-->
-		  <select id="fk_instituicao" name="fk_instituicaoPUDIM" required class="form-control"></select>
-		  <input type="hidden" name="fk_instituicao" value="1">
-		</div>
-		<div class="form-group">
 		  <label for="tipo">Tipo:</label>
 		  <select id="tipo" name="tipo" class="form-control">
 			<option value="TCC">TCC</option>

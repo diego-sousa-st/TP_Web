@@ -57,7 +57,5 @@
 			//executa
 			return ProcessaQuery::consultarQuery($query);
 		}
-
-		
 	}
 ?>
