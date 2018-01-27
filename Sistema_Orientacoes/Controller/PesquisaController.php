@@ -41,6 +41,56 @@
 				<?php
 			}
 			break;
+		case "remover":
+			//ler dados
+			$professor = $_POST['professor'];
+			$area = $_POST['area'];
+			$linha = $_POST['linhaPesquisa'];
+
+			//criar bean
+			$pesquisaBean = new PesquisaBean($professor, $area, $linha);
+
+			//executa no banco
+			$retorno = PesquisaDao::remover($pesquisaBean);
+			if($retorno->status){//se tudo ocorreu bem
+				?>
+					<script>
+						alert('Pesquisa removida com sucesso!');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/");//arrumar
+					</script>
+				<?php
+			}else{
+				?>
+					<script>
+						alert('Erro ao remover pesquisa: <?= $retorno->resposta ?>');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
+					</script>
+				<?php
+			}
+			break;
+		case 'getAll':
+			//executa no banco
+			$retorno = PesquisaDao::getAll();
+			if($retorno->status){//se tudo ocorreu bem
+				for ($i=0; $i < count($retorno->resposta); $i++) {
+					$retorno->resposta[$i]->Linha = utf8_encode($retorno->resposta[$i]->Linha);
+				}
+			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
+		case 'get':
+			//ler dados
+			$professor = $_POST['professor'];
+
+			//executa no banco
+			$retorno = PesquisaDao::get($professor);
+			if($retorno->status){//se tudo ocorreu bem
+				$retorno->resposta[0]->Linha = utf8_encode($retorno->resposta[0]->Linha);
+			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
 		case 'getAreas':
 			//executa no banco
 			$retorno = PesquisaDao::getAreas();

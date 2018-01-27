@@ -61,7 +61,7 @@
 	  </div>
 	  <form id="formCadastroPesquisa" action="../../../Controller/PesquisaController.php" method="post" class="col-md-8">
 		  <input type="hidden" name="acao" value="cadastrar">
-		  <input type="hidden" name="professor" value="1">
+		  <!-- <input type="hidden" name="professor" value="1"> -->
 		<div class="form-group">
 		  <label for="area">Área:                </label>
 		  <!-- preencher a area com dados do banco-->
