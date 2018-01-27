@@ -99,7 +99,6 @@
 			$retorno = CursoDao::getAll();
 			if($retorno->status){//se tudo ocorreu bem
 				for ($i=0; $i < count($retorno->resposta); $i++) {
-					$retorno->resposta[$i]->Codigo = utf8_encode($retorno->resposta[$i]->Codigo);
 					$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
 					$retorno->resposta[$i]->Instituicao = utf8_encode($retorno->resposta[$i]->Instituicao);
 					$retorno->resposta[$i]->forma = utf8_encode($retorno->resposta[$i]->forma);
@@ -116,7 +115,6 @@
 			//executa no banco
 			$retorno = CursoDao::get($codigo);
 			if($retorno->status){//se tudo ocorreu bem
-				$retorno->resposta[0]->Codigo = utf8_encode($retorno->resposta[0]->Codigo);
 				$retorno->resposta[0]->Nome = utf8_encode($retorno->resposta[0]->Nome);
 				$retorno->resposta[0]->Instituicao = utf8_encode($retorno->resposta[0]->Instituicao);
 				$retorno->resposta[0]->forma = utf8_encode($retorno->resposta[0]->forma);

@@ -139,16 +139,6 @@
 				<?php
 			}
 			break;
-		case 'getAlunosOrientacao':
-			//executa no banco
-			$retorno = AlunoDao::getAlunosOrientacao();
-			for ($i=0; $i < count($retorno->resposta); $i++) {
-				$retorno->resposta[$i]->Matricula = utf8_encode($retorno->resposta[$i]->Matricula);
-				$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
-			}
-			// die(print_r($retorno,true));
-			echo json_encode($retorno);
-			break;
 		case 'atualizar':
 			//ler dados
 			$nome = $_POST['nome'];
@@ -157,9 +147,45 @@
 			$uf = $_POST['uf'];
 			$curso = $_POST['curso'];
 			$cra = $_POST['cra'];
+			$senha = sha1($_POST['senha']);
+			$img = $_FILES['imagem'];
+
+			//Testa a imagem
+
+			$nomeImg = "fotoPerfil.png";//nome da imagegem quando nenhuma for selecionada
+			//testando se há arquivo
+			if(!empty($img['name'])){
+				//verifica se o arquivo é uma imagem
+				if(!preg_match('/^image\/(pjpeg|jpeg|png|gif|bmp)$/',$img['type'])){
+					?>
+			 			<script>
+							alert('Tipo da imagem inválido!');
+							window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
+						</script>
+					<?php
+				}
+				//tamanho limite da imagem
+				$tamanho = 3000000;
+				if($img['size']>$tamanho){
+					?>
+						<script>
+							alert('Imagem grande demais!');
+							window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
+						</script>
+					<?php
+				}
+
+				//Se nao houver erro
+				//pega a extenção da imagem
+				preg_match('/\.(gif|bmp|png|jpg|jpeg){1}$/i',$img['name'], $ext);
+				//gera nome da imagem
+				$nomeImg = time()."_".rand(1,50000).".".$ext[1];
+				//caminho
+				$caminhoImg = "../Persistence/FotosPerfil/".$nomeImg;
+			}
 
 			//criar bean
-			$alunoBean = new AlunoBean($matricula, $nome, $cidade, $uf, $curso, "", $cra);
+			$alunoBean = new AlunoBean($matricula, $nome, $cidade, $uf, $curso, $senha, $cra, $nomeImg);
 
 			//executa no banco
 			$retorno = AlunoDao::atualizar($alunoBean);
@@ -173,28 +199,84 @@
 				$_SESSION['aluno']->uf = $alunoBean->getUf();
 				$_SESSION['aluno']->curso = $alunoBean->getCurso();
 				$_SESSION['aluno']->cra = $alunoBean->getCra();
+				$_SESSION['aluno']->img = $alunoBean->getImg();
 
 				//redireciona
 				?>
 					<script>
 						alert('Aluno atualizado com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
 					</script>
 				<?php
 			}else{
 				?>
 					<script>
 						alert('Erro ao atualizar aluno: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
 					</script>
 				<?php
 			}
 			break;
+		case "remover":
+			//ler dados
+			$matricula = $_POST['matricula'];//PK
+
+			//executa no banco
+			$retorno = AlunoDao::remover($matricula);
+			if($retorno->status){//se tudo ocorreu bem
+				?>
+					<script>
+						alert('Aluno removido com sucesso!');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/");
+					</script>
+				<?php
+			}else{
+				?>
+					<script>
+						alert('Erro ao remover aluno: <?= $retorno->resposta ?>');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
+					</script>
+				<?php
+			}
+			break;
+		case 'getAll':
+			//executa no banco
+			$retorno = AlunoDao::getAll();
+			if($retorno->status){//se tudo ocorreu bem
+				for ($i=0; $i < count($retorno->resposta); $i++) {
+					$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
+					$retorno->resposta[$i]->Cidade = utf8_encode($retorno->resposta[$i]->Cidade);
+					$retorno->resposta[$i]->UF = utf8_encode($retorno->resposta[$i]->UF);
+				}
+			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
+		case 'get':
+			//ler dados
+			$matricula = $_POST['matricula'];//PK
+
+			//executa no banco
+			$retorno = AlunoDao::get($matricula);
+			if($retorno->status){//se tudo ocorreu bem
+				$retorno->resposta[0]->Nome = utf8_encode($retorno->resposta[0]->Nome);
+				$retorno->resposta[0]->Cidade = utf8_encode($retorno->resposta[0]->Cidade);
+				$retorno->resposta[0]->UF = utf8_encode($retorno->resposta[0]->UF);
+			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
 		case 'getCursos':
 			//executa no banco
-			$retorno = AlunoDao::getCursos();
-			for ($i=0; $i < count($retorno->resposta); $i++) {
-				$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
+			require_once("../Persistence/CursoDao.class.php");
+			$retorno = CursoDao::getAll();
+			if($retorno->status){//se tudo ocorreu bem
+				for ($i=0; $i < count($retorno->resposta); $i++) {
+					$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
+					$retorno->resposta[$i]->Instituicao = utf8_encode($retorno->resposta[$i]->Instituicao);
+					$retorno->resposta[$i]->forma = utf8_encode($retorno->resposta[$i]->forma);
+					$retorno->resposta[$i]->Sigla = utf8_encode($retorno->resposta[$i]->Sigla);
+				}
 			}
 			// die(print_r($retorno,true));
 			echo json_encode($retorno);

@@ -12,35 +12,16 @@
 			return ProcessaQuery::executarQuery($query);
 		}
 
-		//Conecta com o banco e recupera informacoes do aluno
-		public static function getAluno($matricula,$senha){
-			//cria a query
-			$query = "SELECT * FROM ALUNO WHERE matricula = {$matricula} AND senhaAluno = '{$senha}';";
-
-			//die(print_r($query,true));
-			//executa
-			return ProcessaQuery::consultarQuery($query);
-		}
-
-		//Conecta com o banco e pega infs
-		public static function getAlunosOrientacao(){
-			//cria a query
-			$query = "SELECT Nome, Matricula FROM Aluno;";
-
-			//die(print_r($query,true));
-			//executa
-			return ProcessaQuery::consultarQuery($query);
-		}
-
 		//Conecta com o banco e atualiza o obj
-		public static function atualiza($bean){
+		public static function atualizar($bean){
 			//cria a query
 			$query = "UPDATE aluno SET
 					Nome = '{$bean->getNome()}',
 					Cidade = '{$bean->getCidade()}',
 					UF = '{$bean->getUf()}',
 					CRA = {$bean->getCra()},
-					Curso = {$bean->getCurso()}
+					Curso = {$bean->getCurso()},
+					imagemAluno = '{$bean->getImg()}'
 					WHERE Matricula = {$bean->getMatricula()};";
 
 			//die(print_r($query,true));
@@ -48,10 +29,40 @@
 			return ProcessaQuery::executarQuery($query);
 		}
 
-		//Conecta com o banco e pega infs
-		public static function getCursos(){
+		//Conecta com o banco e remove o obj pela pk
+		public static function remover($id){
 			//cria a query
-			$query = "SELECT Nome, Codigo FROM Curso;";
+			$query = "DELETE FROM aluno WHERE Matricula = {$id};";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::executarQuery($query);
+		}
+
+		//Conecta com o banco e recupera tudo
+		public static function getAll(){
+			//cria a query
+			$query = "SELECT * FROM aluno;";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
+
+		//Conecta com o banco e recupera tudo de acordo com a pk passada
+		public static function get($id){
+			//cria a query
+			$query = "SELECT * FROM aluno WHERE Matricula = {$id};";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
+
+		//Conecta com o banco e recupera informacoes do aluno
+		public static function getAluno($matricula,$senha){
+			//cria a query
+			$query = "SELECT * FROM ALUNO WHERE matricula = {$matricula} AND senhaAluno = '{$senha}';";
 
 			//die(print_r($query,true));
 			//executa
