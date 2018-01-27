@@ -13,10 +13,45 @@
 			return ProcessaQuery::executarQuery($query);
 		}
 
-		//Conecta com o banco e pega infs
-		public static function getInstituicoesCurso(){
+		//Conecta com o banco e atualiza o obj
+		public static function atualizar($bean){
 			//cria a query
-			$query = "SELECT Nome, Sigla FROM Instituicao;";
+			$query = "UPDATE Instituicao SET
+					Nome = '{$bean->getNome()}',
+					Cidade = '{$bean->getCidade()}',
+					UF = '{$bean->getUf()}',
+					Pais = '{$bean->getPais()}'
+					WHERE Sigla = '{$bean->getSigla()}';";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::executarQuery($query);
+		}
+
+		//Conecta com o banco e remove o obj pela pk
+		public static function remover($id){
+			//cria a query
+			$query = "DELETE FROM Instituicao WHERE Sigla = '{$id}';";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::executarQuery($query);
+		}
+
+		//Conecta com o banco e recupera tudo
+		public static function getAll(){
+			//cria a query
+			$query = "SELECT * FROM Instituicao;";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
+
+		//Conecta com o banco e recupera tudo de acordo com a pk passada
+		public static function get($id){
+			//cria a query
+			$query = "SELECT * FROM Instituicao WHERE Sigla = '{$id}';";
 
 			//die(print_r($query,true));
 			//executa
