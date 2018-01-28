@@ -3,6 +3,7 @@
 	if(!$logado){
 		header("Location: ../pags/telaLogin.php");
 	}
+	
 ?>
 <!doctype html>
 <html class="no-js" lang="pt-br">
@@ -41,6 +42,10 @@
 
 		<!-- Add your site or application content here -->
 		<!-- início área do site -->
+
+		<?php
+			include_once("../pags/Templates/cabecalho.php");
+		?>
 
 		<div class="container">
 			<div class="page-header">

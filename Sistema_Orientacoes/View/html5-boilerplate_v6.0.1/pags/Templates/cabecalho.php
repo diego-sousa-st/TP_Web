@@ -18,7 +18,7 @@
 				<li><a href="pags/telaCadastroInstituicao.php">Instituições</a></li>
 				<li><a href="pags/telaCadastroOrientacao.php">Orientações</a></li>
 				<?php if(isset($professor)): ?>
-					<li><a href="pags/telaCadastroOrientacao.php">Alunos</a></li>
+					<li><a href="pags/telaListarAlunos.php">Alunos</a></li>
 				<?php endif; ?>
 			</ul>
 		</li>
