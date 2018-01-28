@@ -15,7 +15,7 @@
 				<li><a href="pags/telaCadastroOrientacao.php">Professores</a></li>
 				<li><a href="pags/telaCadastroCurso.php">Pesquisas</a></li>
 				<li><a href="pags/telaCadastroCurso.php">Cursos</a></li>
-				<li><a href="pags/telaCadastroInstituicao.php">Instituições</a></li>
+				<li><a href="pags/telaListarInstituicoes.php">Instituições</a></li>
 				<li><a href="pags/telaCadastroOrientacao.php">Orientações</a></li>
 				<?php if(isset($professor)): ?>
 					<li><a href="pags/telaListarAlunos.php">Alunos</a></li>

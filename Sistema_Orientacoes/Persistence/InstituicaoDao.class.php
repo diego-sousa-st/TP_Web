@@ -33,7 +33,7 @@
 			//cria a query
 			$query = "DELETE FROM Instituicao WHERE Sigla = '{$id}';";
 
-			//die(print_r($query,true));
+			// die(print_r($query,true));
 			//executa
 			return ProcessaQuery::executarQuery($query);
 		}
@@ -52,6 +52,21 @@
 		public static function get($id){
 			//cria a query
 			$query = "SELECT * FROM Instituicao WHERE Sigla = '{$id}';";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
+
+		//Conecta com o banco e recupera as dependencias de chave estrangeira
+		public static function getDependencias($id){
+			$query = array();
+			$x = 0;//contador de queries
+
+			//cria a query
+			$query[$x++] = "SELECT * FROM Curso WHERE Instituicao = '{$id}';";
+
+			$query[$x++] = "SELECT * FROM Professor WHERE Instituicao = '{$id}';";
 
 			//die(print_r($query,true));
 			//executa

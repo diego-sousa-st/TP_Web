@@ -45,8 +45,8 @@
 			break;
 		case 'atualizar':
 			//ler dados
-			$sigla = $_DADOS['siglaPesquisa'];//PK
-			$nome = $_DADOS['nomeInstituicao'];
+			$sigla = $_DADOS['sigla'];//PK
+			$nome = $_DADOS['nome'];
 			$cidade = $_DADOS['cidade'];
 			$uf = $_DADOS['uf'];
 			$pais = $_DADOS['pais'];
@@ -56,43 +56,27 @@
 
 			//executa no banco
 			$retorno = InstituicaoDao::atualizar($instituicaoBean);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Instituição atualizada com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao atualizar instituição: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
-			}
+			echo json_encode($retorno);
 			break;
 		case "remover":
 			//ler dados
-			$sigla = $_DADOS['siglaPesquisa'];//PK
+			$sigla = $_DADOS['sigla'];//PK
 
-			//executa no banco
-			$retorno = InstituicaoDao::remover($sigla);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Instituição removida com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao remover instituição: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
+			$retorno = InstituicaoDao::getDependencias($sigla);
+			if(count($retorno->resposta[0]) != 0){
+				$retorno->status = false;
+				$retorno->resposta = "Instituição não pode ser excluída, existem cursos nela!";
 			}
+			elseif(count($retorno->resposta[1]) != 0){
+				$retorno->status = false;
+				$retorno->resposta = "Instituição não pode ser excluída, existem professores nela!";
+			}
+			else{
+				//executa no banco
+				$retorno = InstituicaoDao::remover($sigla);
+			}
+
+			echo json_encode($retorno);
 			break;
 		case 'getAll':
 			//executa no banco
