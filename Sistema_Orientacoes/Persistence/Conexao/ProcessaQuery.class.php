@@ -42,7 +42,8 @@
 				}
 			}
 			else{
-				if($conexao->executarQuery($query) != 1){
+				$result = $conexao->executarQuery($query);
+				if($result == false && $result[2] != ""){
 					$conexao->rollbackTransacao();
 					$retorno->status = false;
 					$retorno->resposta = $GLOBALS['msgErroExecQuery'];

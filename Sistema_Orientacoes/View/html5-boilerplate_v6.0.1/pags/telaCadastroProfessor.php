@@ -65,7 +65,7 @@
 
 						<div class="form-group">
 							<label for="email">Email</label>
-							<input type="email" class="form-control" name="email" id="email" placeholder="Digite seu email..." maxlength="45">
+							<input type="email" class="form-control" name="email" id="email" placeholder="Digite seu email..." maxlength="45" required>
 						</div>
 
 						<div class="form-group">
@@ -80,7 +80,7 @@
 
 						<div class="form-group" id="formSenha">
 							<label for="senha">Senha</label>
-							<input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha...">
+							<input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha..." required>
 						</div>
 
 						<div class="form-group" id="formRedigiteSenha">

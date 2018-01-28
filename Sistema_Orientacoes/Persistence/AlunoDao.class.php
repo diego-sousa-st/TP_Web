@@ -21,7 +21,8 @@
 					UF = '{$bean->getUf()}',
 					CRA = {$bean->getCra()},
 					Curso = {$bean->getCurso()},
-					imagemAluno = '{$bean->getImg()}'
+					imagemAluno = '{$bean->getImg()}',
+					senhaAluno = '{$bean->getSenha()}'
 					WHERE Matricula = {$bean->getMatricula()};";
 
 			//die(print_r($query,true));

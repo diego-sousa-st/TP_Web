@@ -143,14 +143,25 @@
 			$email = $_DADOS['email'];
 			$pagina = $_DADOS['pagina'];
 			$lattes = $_DADOS['lattes'];
-			$senha = sha1($_DADOS['senha']);
+			$senhaAntiga = sha1($_DADOS['senhaAntiga']);
 			$img = $_FILES['imagem'];
-			$senhaProf = $_DADOS['senhaProf'];
 			$imgAntiga = $_DADOS['imgAntiga'];
+
+			//testa senha antiga
+			$senhaSalva = ProfessorDao::get($id)->resposta[0]->senhaProfessor;
+			if($senhaSalva != $senhaAntiga){
+				//redireciona
+				?>
+					<script>
+						alert('Sua senha antiga esta incorreta!');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaAlterarPerfil.php");
+					</script>
+				<?php
+			}
 
 			//Testa a imagem
 
-			$nomeImg = "fotoPerfil.png";//nome da imagegem quando nenhuma for selecionada
+			$nomeImg = $imgAntiga;//nome da imagegem quando nenhuma for selecionada
 			//testando se há arquivo
 			if(!empty($img['name'])){
 				//verifica se o arquivo é uma imagem
@@ -182,12 +193,25 @@
 				$caminhoImg = "../Persistence/FotosPerfil/".$nomeImg;
 			}
 
+			$senha = "";
+			if(isset($_DADOS['senha']) && $_DADOS['senha'] != ""){
+				$senha = sha1($_DADOS['senha']);
+			}
+			else{
+				$senha = $senhaAntiga;
+			}
+
 			//criar bean
 			$professorBean = new ProfessorBean($id, $nome, $instituicao, $email, $pagina, $lattes, $senha, $nomeImg);
 
 			//executa no banco
 			$retorno = ProfessorDao::atualizar($professorBean);
 			if($retorno->status){//se tudo ocorreu bem
+				if($nomeImg != $imgAntiga){
+					move_uploaded_file($img['tmp_name'], $caminhoImg);
+					if($imgAntiga != "fotoPerfil.png")
+						unlink('../Persistence/FotosPerfil/'.$imgAntiga);
+				}
 				//redireciona
 				?>
 					<script>

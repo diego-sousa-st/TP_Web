@@ -17,7 +17,7 @@
 		case 'cadastrar':
 			//ler dados
 			$nome = $_DADOS['nome'];
-			$matricula = $_DADOS['matricula'];
+			$matricula = $_DADOS['matricula'];//PK
 			$cidade = $_DADOS['cidade'];
 			$uf = $_DADOS['uf'];
 			$curso = $_DADOS['curso'];
@@ -127,18 +127,30 @@
 		case 'atualizar':
 			//ler dados
 			$nome = $_DADOS['nome'];
-			$matricula = $_DADOS['matricula'];
+			$matricula = $_DADOS['matricula'];//PK
 			$cidade = $_DADOS['cidade'];
 			$uf = $_DADOS['uf'];
 			$curso = $_DADOS['curso'];
 			$cra = $_DADOS['cra'];
-			$senha = sha1($_DADOS['senha']);
+			$senhaAntiga = sha1($_DADOS['senhaAntiga']);
 			$img = $_FILES['imagem'];
 			$imgAntiga = $_DADOS['imgAntiga'];
 
+			//testa senha antiga
+			$senhaSalva = AlunoDao::get($matricula)->resposta[0]->senhaAluno;
+			if($senhaSalva != $senhaAntiga){
+				//redireciona
+				?>
+					<script>
+						alert('Sua senha antiga esta incorreta!');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaAlterarPerfil.php");
+					</script>
+				<?php
+			}
+
 			//Testa a imagem
 
-			$nomeImg = "fotoPerfil.png";//nome da imagegem quando nenhuma for selecionada
+			$nomeImg = $imgAntiga;//nome da imagegem quando nenhuma for selecionada
 			//testando se há arquivo
 			if(!empty($img['name'])){
 				//verifica se o arquivo é uma imagem
@@ -170,24 +182,38 @@
 				$caminhoImg = "../Persistence/FotosPerfil/".$nomeImg;
 			}
 
+
+			$senha = "";
+			if(isset($_DADOS['senha']) && $_DADOS['senha'] != ""){
+				$senha = sha1($_DADOS['senha']);
+			}
+			else{
+				$senha = $senhaAntiga;
+			}
+
 			//criar bean
 			$alunoBean = new AlunoBean($matricula, $nome, $cidade, $uf, $curso, $senha, $cra, $nomeImg);
 
 			//executa no banco
 			$retorno = AlunoDao::atualizar($alunoBean);
 			if($retorno->status){//se tudo ocorreu bemloginAluno
+				if($nomeImg != $imgAntiga){
+					move_uploaded_file($img['tmp_name'], $caminhoImg);
+					if($imgAntiga != "fotoPerfil.png")
+						unlink('../Persistence/FotosPerfil/'.$imgAntiga);
+				}
 				//redireciona
 				?>
 					<script>
 						alert('Aluno atualizado com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");
 					</script>
 				<?php
 			}else{
 				?>
 					<script>
 						alert('Erro ao atualizar aluno: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaAlterarPerfil.php");
 					</script>
 				<?php
 			}

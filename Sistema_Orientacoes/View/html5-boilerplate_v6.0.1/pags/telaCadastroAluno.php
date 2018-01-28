@@ -61,7 +61,7 @@
 						<div class="form-group">
 							<label for="matricula">Matricula</label>
 							<input type="number" class="form-control" name="matricula" id="matricula" placeholder="Digite sua matricula..."
-							min="0" max="999999999">
+							min="0" max="999999999" required>
 						</div>
 
 						<div class="form-group">
@@ -90,7 +90,7 @@
 
 						<div class="form-group" id="formSenha">
 							<label for="senha">Senha</label>
-							<input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha...">
+							<input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha..." required>
 						</div>
 
 						<div class="form-group" id="formRedigiteSenha">

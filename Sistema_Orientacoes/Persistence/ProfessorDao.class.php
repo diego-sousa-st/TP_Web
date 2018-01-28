@@ -20,10 +20,11 @@
 					Instituicao = '{$bean->getInstituicao()}',
 					Pagina = '{$bean->getPagina()}',
 					Lattes = {$bean->getLattes()},
-					imagemProfessor = '{$bean->getImg()}'
+					imagemProfessor = '{$bean->getImg()}',
+					senhaProfessor = '{$bean->getSenha()}'
 					WHERE ID = {$bean->getId()};";
 
-			//die(print_r($query,true));
+			// die(print_r($query,true));
 			//executa
 			return ProcessaQuery::executarQuery($query);
 		}
