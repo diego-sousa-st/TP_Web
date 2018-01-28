@@ -253,5 +253,22 @@
 			// die(print_r($retorno,true));
 			echo json_encode($retorno);
 			break;
+		case 'atualizarNaTabela':
+			//ler dados
+			$nome = $_DADOS['nome'];
+			$matricula = $_DADOS['matricula'];//PK
+			$cidade = $_DADOS['cidade'];
+			$uf = $_DADOS['uf'];
+			$curso = $_DADOS['curso'];
+			$cra = $_DADOS['cra'];
+
+			//criar bean
+			$alunoBean = new AlunoBean($matricula, $nome, $cidade, $uf, $curso, "", $cra, "");
+
+			//executa no banco
+			$retorno = AlunoDao::atualizarNaTabela($alunoBean);
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
 	}
 ?>

@@ -25,8 +25,8 @@ function getAlunos(){
 					+"<td>"+res.resposta[i].UF+"</td>"
 					+"<td>"+cra+"</td>"
 					+"<td class='curso'>"+res.resposta[i].Curso+"</td>"
-					+"<td id='alterar_"+res.resposta[i].Matricula+"'>"+"<span class='btn'>ALTERAR</span>"+"</td>"
-					+"<td id='excluir_"+res.resposta[i].Matricula+"' onclick='remover(this);'>"+"<span class='btn'>EXCLUIR</span>"+"</td>"
+					+"<td class='alterar' onclick='permitirAlterar(this);'>"+"<span class='btn'>ALTERAR</span>"+"</td>"
+					+"<td onclick='remover(this);'>"+"<span class='btn'>EXCLUIR</span>"+"</td>"
 					+"</tr>";
 				$("tbody").append(linha);
 			}
@@ -37,32 +37,8 @@ function getAlunos(){
 	});
 }
 
-
-//manda ajax assim q a pagina carregar para pegar as informacoes
-function getAluno(){
-	var url = "../../../Controller/AlunoController.php";
-	//informacoes passadas para a url
-	var req = {
-		acao: 'get',
-		matricula: $("#matricula").val()
-	};
-	$.post(url, req, function (data) {
-		var res = JSON.parse(data);
-		if (res.status) {//deu certo
-			$("#nome").val(res.resposta[0].Nome);
-			$("#cidade").val(res.resposta[0].Cidade);
-			$("#uf").val(res.resposta[0].UF);
-			$("#cra").val(res.resposta[0].CRA);
-			$("#imgAntiga").val(res.resposta[0].imagemAluno);
-			$("#curso").val(res.resposta[0].Curso);
-		} else {
-			alert(res.resposta);
-		}
-	});
-}
-
-//manda ajax assim q a pagina carregar para pegar as informacoes
-function getCursos(){
+//pega os cursos e coloca no sleect na hora de alterar
+function getCursos(codigo){
 	var url = "../../../Controller/CursoController.php";
 	//informacoes passadas para a url
 	var req = {
@@ -71,10 +47,14 @@ function getCursos(){
 	$.post(url, req, function (data) {
 		var res = JSON.parse(data);
 		if (res.status) {//deu certo
-			var options = "";
+			var options = "<select class=\"form-control\" name=\"curso\">";
 			for (var i = 0; i < res.resposta.length; i++) {
-				options += "<option value='"+res.resposta[i].Codigo+"'>"+res.resposta[i].Nome+"</option>"
+				if(codigo == res.resposta[i].Codigo)
+					options += "<option value='"+res.resposta[i].Codigo+"' selected>"+res.resposta[i].Nome+"</option>"
+				else
+					options += "<option value='"+res.resposta[i].Codigo+"'>"+res.resposta[i].Nome+"</option>"
 			}
+			options += "</select>";
 			$("#curso").html(options);
 			getAluno();
 		} else {
@@ -127,4 +107,80 @@ function remover(obj){
 			}
 		});
 	}
+}
+
+//abre os campos da linha permitindo a edicao
+function permitirAlterar(obj){
+	var url = "../../../Controller/AlunoController.php";
+	//informacoes passadas para a url
+	var req = {
+		acao: 'get',
+		matricula: $(obj).parent().find(".matricula").html()
+	};
+	$.post(url, req, function (data) {
+		var res = JSON.parse(data);
+		if (res.status) {//deu certo
+			var options = ["MG","SP","ES","RJ"];
+			var optionsHTML = "";
+			for (var i = 0; i < options.length; i++) {
+				if(options[i] == res.resposta[0].UF)
+					optionsHTML += "<option value=\""+options[i]+"\" selected>"+options[i]+"</option>";
+				else
+					optionsHTML += "<option value=\""+options[i]+"\">"+options[i]+"</option>";
+			}
+
+			var cra = res.resposta[0].CRA;
+			if(res.resposta[0].CRA == null)
+				cra = "";
+
+			var linha = "<td class='matricula'>"+res.resposta[0].Matricula+"</td>"
+				+"<td><input type=\"text\" class=\"form-control\" name=\"nome\" placeholder=\"Digite seu nome...\" value='"+res.resposta[0].Nome+"'></td>"
+				+"<td><input type=\"text\" class=\"form-control\" name=\"cidade\" placeholder=\"Digite o nome da sua cidade...\" value='"+res.resposta[0].Cidade+"'></td>"
+				+"<td><select name=\"uf\" class=\"form-control\">"
+					+optionsHTML
+				+"</select>"
+				+"<td><input type=\"number\" class=\"form-control\" name=\"cra\" placeholder=\"Digite o seu cra...\" min=\"0\" max=\"100\" value='"+cra+"'></td>"
+				+"<td id='curso'>"+res.resposta[0].Curso+"</td>"
+				+"<td>"+"<span class='btn' onclick='alterar(this);'>ALTERAR</span>"+"<span class='btn' onclick='location.reload();'>CANCELAR</span>"+"</td>"
+				+"<td onclick='remover(this);'>"+"<span class='btn'>EXCLUIR</span>"+"</td>";
+
+			//altero a linha
+			$(obj).parent().html(linha);
+			//add select
+			getCursos(res.resposta[0].Curso);
+			//ajustar todos os botoes alterar
+			for (var i = 0; i < $(".alterar").length; i++) {
+				$($(".alterar")[i]).attr("onclick","alert('Uma alteração já esta sendo feita!')")
+			}
+		} else {
+			alert(res.resposta);
+		}
+	});
+}
+
+//altera no banco de dados
+function alterar(obj){
+	var tds = $(obj).parent().parent().find("td");
+
+	var url = "../../../Controller/AlunoController.php";
+	//informacoes passadas para a url
+	var req = {
+		acao: 'atualizarNaTabela',
+		matricula: $(tds[0]).html(),
+		nome: $(tds[1]).find("input").val(),
+		cidade: $(tds[2]).find("input").val(),
+		uf: $(tds[3]).find("select").val(),
+		curso: $(tds[5]).find("select").val(),
+		cra: $(tds[4]).find("input").val()
+	};
+	alert(JSON.stringify(req));
+	$.post(url, req, function (data) {
+		var res = JSON.parse(data);
+		if (res.status) {//deu certo
+			alert("Aluno alterado com sucesso!");
+			location.reload();
+		} else {
+			alert(res.resposta);
+		}
+	});
 }

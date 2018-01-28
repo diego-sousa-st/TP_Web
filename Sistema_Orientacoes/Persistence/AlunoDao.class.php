@@ -69,5 +69,21 @@
 			//executa
 			return ProcessaQuery::consultarQuery($query);
 		}
+
+		//Conecta com o banco e atualiza o obj
+		public static function atualizarNaTabela($bean){
+			//cria a query
+			$query = "UPDATE aluno SET
+					Nome = '{$bean->getNome()}',
+					Cidade = '{$bean->getCidade()}',
+					UF = '{$bean->getUf()}',
+					CRA = {$bean->getCra()},
+					Curso = {$bean->getCurso()}
+					WHERE Matricula = {$bean->getMatricula()};";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::executarQuery($query);
+		}
 	}
 ?>
