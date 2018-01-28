@@ -45,36 +45,63 @@
 		<div class="container">
 
 		<table class="table table-striped table-bordered table-hover table-condensed">
+			<input type="hidden" id="ehProf" value="<?= isset($professor) ? "true" : "false" ?>">
 			<tbody>
 				<tr>
 					<td rowspan="6">
 						<img src="" alt="Foto Perfil" class="img-circle image-perfil" id="img">
 					</td>
-					<td>Matricula</td>
-					<td id="matricula"><?= $aluno ?></td>
-				</tr>
+				<?php if(isset($professor)): ?>
+						<td>ID</td>
+						<td id="id"><?= $professor ?></td>
+					</tr>
+					<tr>
+						<td>Nome</td>
+						<td id="nomeProfessor"></td>
+					</tr>
+					<tr>
+						<td>Instituição</td>
+						<td id="instituicao"></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td id="email"></td>
+					</tr>
+					<tr>
+						<td>Página</td>
+						<td id="pagina"></td>
+					</tr>
+					<tr>
+						<td>Lattes</td>
+						<td id="lattes"></td>
+					</tr>
+				<?php else: ?>
+						<td>Matricula</td>
+						<td id="matricula"><?= $aluno ?></td>
+					</tr>
+					<tr>
+						<td>Nome</td>
+						<td id="nomeAluno"></td>
+					</tr>
+					<tr>
+						<td>Cidade</td>
+						<td id="cidade"></td>
+					</tr>
+					<tr>
+						<td>UF</td>
+						<td id="uf"></td>
+					</tr>
+					<tr>
+						<td>CRA</td>
+						<td id="cra"></td>
+					</tr>
+					<tr>
+						<td>Curso</td>
+						<td id="curso"></td>
+					</tr>
+				<?php endif; ?>
 				<tr>
-					<td>Nome</td>
-					<td id="nome"></td>
-				</tr>
-				<tr>
-					<td>Cidade</td>
-					<td id="cidade"></td>
-				</tr>
-				<tr>
-					<td>UF</td>
-					<td id="uf"></td>
-				</tr>
-				<tr>
-					<td>CRA</td>
-					<td id="cra"></td>
-				</tr>
-				<tr>
-					<td>Curso</td>
-					<td id="curso"></td>
-				</tr>
-				<tr>
-					<td colspan="3" style="text-align:center"><a href="../../../Controller/DeslogarAluno.php">Deslogar</a></td>
+					<td colspan="3" style="text-align:center"><a href="../../../Controller/Deslogar.php">Deslogar</a></td>
 				</tr>
 			</tbody>
 		</table>

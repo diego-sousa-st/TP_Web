@@ -111,7 +111,7 @@
 			break;
 		case 'get':
 			//ler dados
-			$sigla = $_DADOS['siglaPesquisa'];//PK
+			$sigla = $_DADOS['sigla'];//PK
 
 			//executa no banco
 			$retorno = InstituicaoDao::get($sigla);

@@ -232,8 +232,9 @@
 			if($retorno->status){//se tudo ocorreu bem
 				for ($i=0; $i < count($retorno->resposta); $i++) {
 					$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
-					$retorno->resposta[$i]->Cidade = utf8_encode($retorno->resposta[$i]->Cidade);
-					$retorno->resposta[$i]->UF = utf8_encode($retorno->resposta[$i]->UF);
+					$retorno->resposta[$i]->Email = utf8_encode($retorno->resposta[$i]->Email);
+					$retorno->resposta[$i]->Pagina = utf8_encode($retorno->resposta[$i]->Pagina);
+					$retorno->resposta[$i]->imagemProfessor = utf8_encode($retorno->resposta[$i]->imagemProfessor);
 				}
 			}
 			// die(print_r($retorno,true));
@@ -241,14 +242,15 @@
 			break;
 		case 'get':
 			//ler dados
-			$matricula = $_DADOS['matricula'];//PK
+			$id = $_DADOS['id'];//PK
 
 			//executa no banco
-			$retorno = ProfessorDao::get($matricula);
+			$retorno = ProfessorDao::get($id);
 			if($retorno->status){//se tudo ocorreu bem
 				$retorno->resposta[0]->Nome = utf8_encode($retorno->resposta[0]->Nome);
-				$retorno->resposta[0]->Cidade = utf8_encode($retorno->resposta[0]->Cidade);
-				$retorno->resposta[0]->UF = utf8_encode($retorno->resposta[0]->UF);
+				$retorno->resposta[0]->Email = utf8_encode($retorno->resposta[0]->Email);
+				$retorno->resposta[0]->Pagina = utf8_encode($retorno->resposta[0]->Pagina);
+				$retorno->resposta[0]->imagemProfessor = utf8_encode($retorno->resposta[0]->imagemProfessor);
 			}
 			// die(print_r($retorno,true));
 			echo json_encode($retorno);

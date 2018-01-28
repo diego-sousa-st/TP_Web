@@ -1,7 +1,52 @@
 $(document).ready(function () {
 	//carrega informacoes
-	getAluno();
+	if($("#ehProf").val() == "true")
+		getProfessor();
+	else
+		getAluno();
 });
+
+//manda ajax assim q a pagina carregar para pegar as informacoes
+function getInstituicao(sigla){
+	var url = "../../../Controller/InstituicaoController.php";
+	//informacoes passadas para a url
+	var req = {
+		acao: 'get',
+		sigla: sigla
+	};
+	$.post(url, req, function (data) {
+		var res = JSON.parse(data);
+		if (res.status) {//deu certo
+			$("#instituicao").html(res.resposta[0].Nome);
+		} else {
+			alert(res.resposta);
+		}
+	});
+}
+
+//manda ajax assim q a pagina carregar para pegar as informacoes
+function getProfessor(){
+	var url = "../../../Controller/ProfessorController.php";
+	//informacoes passadas para a url
+	var req = {
+		acao: 'get',
+		id: $("#id").html()
+	};
+	$.post(url, req, function (data) {
+		var res = JSON.parse(data);
+		if (res.status) {//deu certo
+			$("#nomeProfessor").html(res.resposta[0].Nome);
+			$("#email").html(res.resposta[0].Email);
+			$("#pagina").html(res.resposta[0].Pagina);
+			$("#lattes").html(res.resposta[0].Lattes);
+			$("#img").attr("src","../../../Persistence/FotosPerfil/"+res.resposta[0].imagemProfessor);
+			getInstituicao(res.resposta[0].Instituicao);
+		} else {
+			alert(res.resposta);
+		}
+	});
+}
+
 
 //manda ajax assim q a pagina carregar para pegar as informacoes
 function getCurso(codigo){
@@ -32,7 +77,7 @@ function getAluno(){
 	$.post(url, req, function (data) {
 		var res = JSON.parse(data);
 		if (res.status) {//deu certo
-			$("#nome").html(res.resposta[0].Nome);
+			$("#nomeAluno").html(res.resposta[0].Nome);
 			$("#cidade").html(res.resposta[0].Cidade);
 			$("#uf").html(res.resposta[0].UF);
 			$("#cra").html(res.resposta[0].CRA);
