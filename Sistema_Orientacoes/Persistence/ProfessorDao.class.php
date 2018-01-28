@@ -34,7 +34,7 @@
 			//cria a query
 			$query = "DELETE FROM professor WHERE ID = {$id};";
 
-			//die(print_r($query,true));
+			// die(print_r($query,true));
 			//executa
 			return ProcessaQuery::executarQuery($query);
 		}

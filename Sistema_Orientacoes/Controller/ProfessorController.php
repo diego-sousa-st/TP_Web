@@ -230,25 +230,11 @@
 			break;
 		case "remover":
 			//ler dados
-			$matricula = $_DADOS['matricula'];//PK
+			$id = $_DADOS['id'];//PK
 
 			//executa no banco
-			$retorno = ProfessorDao::remover($matricula);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Professor removido com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao remover professor: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
-			}
+			$retorno = ProfessorDao::remover($id);
+			echo json_encode($retorno);
 			break;
 		case 'getAll':
 			//executa no banco

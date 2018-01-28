@@ -103,6 +103,9 @@
 				<tr>
 					<td colspan="3" style="text-align:center"><a href="../../../Controller/Deslogar.php">Deslogar</a></td>
 				</tr>
+				<tr>
+					<td colspan="3" style="text-align:center;cursor:pointer" onclick="apagarPerfil();">Apagar Perfil</td>
+				</tr>
 			</tbody>
 		</table>
 

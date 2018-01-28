@@ -224,21 +224,7 @@
 
 			//executa no banco
 			$retorno = AlunoDao::remover($matricula);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Aluno removido com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao remover aluno: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
-			}
+			echo json_encode($retorno);
 			break;
 		case 'getAll':
 			//executa no banco

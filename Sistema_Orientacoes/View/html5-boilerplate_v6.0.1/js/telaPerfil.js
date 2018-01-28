@@ -88,3 +88,38 @@ function getAluno(){
 		}
 	});
 }
+
+function apagarPerfil(){
+	if(confirm("Tem certeza?")){
+		var url = "";
+		var req = "";
+		if($("#ehProf").val() == "true"){
+			url = "../../../Controller/ProfessorController.php";
+			//informacoes passadas para a url
+			req = {
+				acao: 'remover',
+				id: $("#id").html()
+			};
+		}
+		else{
+			url = "../../../Controller/AlunoController.php";
+			//informacoes passadas para a url
+			req = {
+				acao: 'remover',
+				matricula: $("#matricula").html()
+			};
+		}
+
+
+		$.post(url, req, function (data) {
+			// alert(data);
+			var res = JSON.parse(data);
+			if (res.status) {//deu certo
+				alert("Perfil excluido com sucesso!");
+				window.location.replace("../../../Controller/Deslogar.php");
+			} else {
+				alert('Erro ao remover perfil: '+res.resposta+'');
+			}
+		});
+	}
+}
