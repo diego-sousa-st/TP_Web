@@ -31,7 +31,7 @@
 		<!-- carregamento modernizr-3 -->
 		<script src="../js/vendor/modernizr-3.5.0.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="../js/telaListarInstituicoes.js"></script>
+		<script src="../js/telaListarCursos.js"></script>
 		<!-- validacao senha -->
 		<!-- <script src="../js/validacao.js"></script> -->
 	</head>
@@ -54,16 +54,17 @@
 			</div>
 
 			<?php if(isset($professor)): ?>
-				<label onclick="add();" style="cursor:pointer;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Instituição</label>
+				<label onclick="add();" style="cursor:pointer;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Curso</label>
 			<?php endif; ?>
+
 			<table class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
 					<tr>
-						<th>Sigla</th>
+						<th>Código</th>
 						<th>Nome</th>
-						<th>Cidade</th>
-						<th>UF</th>
-						<th>Pais</th>
+						<th>Instituição</th>
+						<th>Forma</th>
+						<th>Sigla</th>
 						<?php if(isset($professor)): ?>
 							<th>Alterar</th>
 							<th>Excluir</th>

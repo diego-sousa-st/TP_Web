@@ -19,7 +19,7 @@ function getInstituicoes(){
 					+"<td>"+res.resposta[i].Nome+"</td>"
 					+"<td>"+res.resposta[i].Cidade+"</td>"
 					+"<td>"+res.resposta[i].UF+"</td>"
-					+"<td>"+res.resposta[i].Pais+"</td>"
+					+"<td>"+res.resposta[i].Pais+"</td>";
 				if($("#ehProf").val() == "true"){
 					linha += "<td class='alterar' onclick='permitirAlterar(this);'>"+"<span class='btn'>ALTERAR</span>"+"</td>"
 					+"<td onclick='remover(this);'>"+"<span class='btn'>EXCLUIR</span>"+"</td>"
@@ -28,6 +28,7 @@ function getInstituicoes(){
 
 				$("tbody").append(linha);
 			}
+
 		} else {
 			alert(res.resposta);
 		}

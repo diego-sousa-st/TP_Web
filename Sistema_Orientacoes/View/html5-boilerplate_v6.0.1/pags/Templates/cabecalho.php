@@ -14,7 +14,7 @@
 			<ul class="dropdown-menu">
 				<li><a href="pags/telaCadastroOrientacao.php">Professores</a></li>
 				<li><a href="pags/telaCadastroCurso.php">Pesquisas</a></li>
-				<li><a href="pags/telaCadastroCurso.php">Cursos</a></li>
+				<li><a href="pags/telaListarCursos.php">Cursos</a></li>
 				<li><a href="pags/telaListarInstituicoes.php">Instituições</a></li>
 				<li><a href="pags/telaCadastroOrientacao.php">Orientações</a></li>
 				<?php if(isset($professor)): ?>

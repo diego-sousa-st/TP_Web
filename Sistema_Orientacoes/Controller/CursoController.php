@@ -45,54 +45,36 @@
 			break;
 		case 'atualizar':
 			//ler dados
-			$nome = $_DADOS['nomeCurso'];
+			$nome = $_DADOS['nome'];
 			$codigo = $_DADOS['codigo'];//PK
 			$instituicao = $_DADOS['instituicao'];
 			$forma = $_DADOS['forma'];
-			$sigla = $_DADOS['siglaCurso'];
+			$sigla = $_DADOS['sigla'];
 
 			//criar bean
 			$cursoBean = new CursoBean($codigo, $nome, $instituicao, $forma, $sigla);
 
 			//executa no banco
 			$retorno = CursoDao::atualizar($cursoBean);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Curso atualizado com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao atualizar curso: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
-			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
 			break;
 		case "remover":
 			//ler dados
 			$codigo = $_DADOS['codigo'];//PK
 
-			//executa no banco
-			$retorno = CursoDao::remover($codigo);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Curso removido com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao remover curso: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
+			$retorno = CursoDao::getDependencias($codigo);
+			if(count($retorno->resposta) != 0){
+				$retorno->status = false;
+				$retorno->resposta = "Curso não pode ser excluído, existem alunos nele!";
 			}
+			else{
+				//executa no banco
+				$retorno = CursoDao::remover($codigo);
+			}
+
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
 			break;
 		case 'getAll':
 			//executa no banco

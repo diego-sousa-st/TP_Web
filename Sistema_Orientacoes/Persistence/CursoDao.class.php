@@ -53,19 +53,19 @@
 			//cria a query
 			$query = "SELECT * FROM Curso WHERE Codigo = {$id};";
 
-			//die(print_r($query,true));
+			// die(print_r($query,true));
 			//executa
 			return ProcessaQuery::consultarQuery($query);
 		}
 
-		// //Conecta com o banco e recupera tudo relacionado com a instituicao
-		// public static function getAllInstituicao($instituicao){
-		// 	//cria a query
-		// 	$query = "SELECT * FROM Curso WHERE Instituicao = '{$instituicao}';";
-        //
-		// 	//die(print_r($query,true));
-		// 	//executa
-		// 	return ProcessaQuery::consultarQuery($query);
-		// }
+		//Conecta com o banco e recupera tudo
+		public static function getDependencias($id){
+			//cria a query
+			$query = "SELECT * FROM Aluno WHERE Curso = {$id};";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
 	}
 ?>
