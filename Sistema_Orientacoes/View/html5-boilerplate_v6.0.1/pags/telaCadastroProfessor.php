@@ -3,14 +3,13 @@
 	if($logado){
 		header("Location: ../pags/telaPerfil.php");
 	}
-
 ?>
 <!doctype html>
 <html class="no-js" lang="pt-br">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>Login</title>
+		<title>Cadastro</title>
 		<meta name="description" content="Sistema de Gerenciamento de Orientações, Pesquisa etc.">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,6 +29,10 @@
 
 		<!-- carregamento modernizr-3 -->
 		<script src="../js/vendor/modernizr-3.5.0.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="../js/telaCadastroProfessor.js"></script>
+		<!-- validacao senha -->
+		<script src="../js/validacao.js"></script>
 	</head>
 	<body>
 		<!--[if lte IE 9]>
@@ -41,49 +44,80 @@
 
 		<div class="container">
 			<div class="page-header">
-				<h1>Faça login para utilizar o sistema</h1>
+				<h1>Cadastre-se para utilizar o sistema</h1>
 			</div>
 
 			<div class="row">
-				<form action="../../../Controller/AlunoController.php" method="post">
-					<input type="hidden" name="acao" value="logar">
-					<div class="col-md-6">
-						<h3>Logar</h3>
+				<form action="../../../Controller/ProfessorController.php" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="acao" value="cadastrar">
+					<div class="col-md-4">
+						<h3>Cadastro Professor</h3>
+
 						<div class="form-group">
-							<label for="matricula">Matricula</label>
-							<input type="number" class="form-control" name="matricula" id="matricula" placeholder="Digite sua matricula..."
-							min="0" max="999999999">
+							<label for="nome">Nome</label>
+							<input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome..." maxlength="30">
 						</div>
 
 						<div class="form-group">
+							<label for="instituicoes">Instituições</label>
+							<select class="form-control" name="instituicoes" id="instituicoes"></select>
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" class="form-control" name="email" id="email" placeholder="Digite seu email..." maxlength="45">
+						</div>
+
+						<div class="form-group">
+							<label for="pagina">Página</label>
+							<input type="url" class="form-control" name="pagina" id="pagina" placeholder="Digite sua pagina..." maxlength="150">
+						</div>
+
+						<div class="form-group">
+							<label for="lattes">Lattes</label>
+							<input type="number" class="form-control" name="lattes" id="lattes" placeholder="Digite seu lattes..." min="0" max="9999999999999999">
+						</div>
+
+						<div class="form-group" id="formSenha">
 							<label for="senha">Senha</label>
 							<input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha...">
 						</div>
+
+						<div class="form-group" id="formRedigiteSenha">
+							<label for="redigiteSenha">Repita a Senha</label>
+							<input type="password" class="form-control" name="redigiteSenha" id="redigiteSenha" placeholder="Redigite sua senha...">
+						</div>
+
+						<div class="form-group" id="formImagem">
+							<label for="senhaProf">Senha para cadastrar professor:</label>
+							<input type="password" class="form-control" name="senhaProf" id="senhaProf" placeholder="Digite a senha para cadastrar professor...">
+						</div>
+
+						<div class="form-group" id="formImagem">
+							<label for="imagem">Imagem de Perfil:</label>
+							<input type="file" name="imagem" id="imagem" value="Procurar Imagem">
+						</div>
+
+
+
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">
-							Logar
+							Cadastrar
 							</button>
 						</div>
 					</div>
 				</form>
-
-				<aside class="col-md-5">
-					<blockquote>
-  						<p>Não tem cadastro! <strong> <a href="./telaCadastroAluno.php">Faça agora!</a></strong></p>
-					</blockquote>
-				</aside>
 			</div>
 
 		</div>
 
 		<div class="container col-md-12">
-			<div class="space">
-
-			</div>
 			<?php
-            	include_once("./Templates/rodape.php");
-        	?>
+				include_once("./Templates/rodape.php");
+			?>
 		</div>
+
+
 
 
 		<!-- fim area site -->

@@ -1,3 +1,9 @@
+<?php
+	include_once("../../../Controller/VerificaLogado.php");
+	if(!$logado){
+		header("Location: ../pags/telaLogin.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="pt-br" class="no-js">
   <head>

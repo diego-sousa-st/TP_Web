@@ -1,8 +1,8 @@
 <?php
 	// error_reporting(0);
 	require_once('Util/Msgs.php');
-	require_once("../Persistence/AlunoDao.class.php");
-	require_once("../Model/AlunoBean.class.php");
+	require_once("../Persistence/ProfessorDao.class.php");
+	require_once("../Model/ProfessorBean.class.php");
 
 	$_DADOS = $_POST;
 
@@ -13,16 +13,27 @@
 	}
 
 	$retorno = new stdClass();
+	$senhaProfGeral = "RamonLegal";//senha para garantir que n e um professor tentando se cadastrar como professor
 	switch($acao){
 		case 'cadastrar':
 			//ler dados
 			$nome = $_DADOS['nome'];
-			$matricula = $_DADOS['matricula'];
-			$cidade = $_DADOS['cidade'];
-			$uf = $_DADOS['uf'];
-			$curso = $_DADOS['curso'];
+			$instituicao = $_DADOS['instituicoes'];
+			$email = $_DADOS['email'];
+			$pagina = $_DADOS['pagina'];
+			$lattes = $_DADOS['lattes'];
 			$senha = sha1($_DADOS['senha']);
 			$img = $_FILES['imagem'];
+			$senhaProf = $_DADOS['senhaProf'];
+
+			if($senhaProf != $senhaProfGeral){
+				?>
+					<script>
+						alert('A senha para cadastrar professor esta incorreta!');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroProfessor.php");
+					</script>
+				<?php
+			}
 
 			//Testa a imagem
 
@@ -34,7 +45,7 @@
 					?>
 			 			<script>
 							alert('Tipo da imagem inválido!');
-							window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroAluno.php");
+							window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroProfessor.php");
 						</script>
 					<?php
 				}
@@ -44,7 +55,7 @@
 					?>
 						<script>
 							alert('Imagem grande demais!');
-							window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroAluno.php");
+							window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroProfessor.php");
 						</script>
 					<?php
 				}
@@ -59,14 +70,14 @@
 			}
 
 			//criar bean
-			$alunoBean = new AlunoBean($matricula, $nome, $cidade, $uf, $curso, $senha, "",$nomeImg);
+			$professorBean = new ProfessorBean("", $nome, $instituicao, $email, $pagina, $lattes, $senha, $nomeImg);
 
 			//executa no banco
-			$retorno = AlunoDao::cadastrar($alunoBean);
+			$retorno = ProfessorDao::cadastrar($professorBean);
 			if($retorno->status){//se tudo ocorreu bem
 				session_start();
 				$_SESSION['logado'] = true;
-				$_SESSION['aluno'] = $matricula;
+				$_SESSION['professor'] = (ProfessorDao::getUltimoId())->resposta[0]->ID;
 
 				//Faz upload da imagem
 				if($nomeImg != "fotoPerfil.png"){
@@ -77,40 +88,40 @@
 				//redireciona
 				?>
 					<script>
-						alert('Aluno cadastrado com sucesso!');
+						alert('Professor cadastrado com sucesso!');
 						window.location.replace("../View/html5-boilerplate_v6.0.1/");
 					</script>
 				<?php
 			}else{
 				?>
 					<script>
-						alert('Erro ao cadastrar aluno: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroAluno.php");
+						alert('Erro ao cadastrar professor: <?= $retorno->resposta ?>');
+						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaCadastroProfessor.php");
 					</script>
 				<?php
 			}
 			break;
 		case 'logar':
 			//ler dados
-			$matricula = $_DADOS['loginAluno'];
+			$email = $_DADOS['loginProf'];
 			$senha = $_DADOS['senha'];
 
 			//executa no banco
-			$retorno = AlunoDao::getAluno($matricula,sha1($senha));
+			$retorno = ProfessorDao::getProfessor($email,sha1($senha));
 
 			if($retorno->status){//se tudo ocorreu bem
 				if($retorno->resposta != null){//usuario existe
 					//seta a session
 					session_start();
 					$_SESSION['logado'] = true;
-					$_SESSION['aluno'] = $matricula;
+					$_SESSION['professor'] = $retorno->resposta[0]->ID;
 
 					//redireciona
 					header('Location: ../View/html5-boilerplate_v6.0.1/');
 				}else{//se o usuario nao existe
 					?>
 						<script>
-							alert('Matricula ou senha inválidos!');
+							alert('Email ou senha inválidos!');
 							window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaLogin.php");
 						</script>
 					<?php
@@ -126,14 +137,15 @@
 			break;
 		case 'atualizar':
 			//ler dados
+			$id = $_DADOS['id'];
 			$nome = $_DADOS['nome'];
-			$matricula = $_DADOS['matricula'];
-			$cidade = $_DADOS['cidade'];
-			$uf = $_DADOS['uf'];
-			$curso = $_DADOS['curso'];
-			$cra = $_DADOS['cra'];
+			$instituicao = $_DADOS['instituicoes'];
+			$email = $_DADOS['email'];
+			$pagina = $_DADOS['pagina'];
+			$lattes = $_DADOS['lattes'];
 			$senha = sha1($_DADOS['senha']);
 			$img = $_FILES['imagem'];
+			$senhaProf = $_DADOS['senhaProf'];
 			$imgAntiga = $_DADOS['imgAntiga'];
 
 			//Testa a imagem
@@ -171,22 +183,22 @@
 			}
 
 			//criar bean
-			$alunoBean = new AlunoBean($matricula, $nome, $cidade, $uf, $curso, $senha, $cra, $nomeImg);
+			$professorBean = new ProfessorBean($id, $nome, $instituicao, $email, $pagina, $lattes, $senha, $nomeImg);
 
 			//executa no banco
-			$retorno = AlunoDao::atualizar($alunoBean);
-			if($retorno->status){//se tudo ocorreu bemloginAluno
+			$retorno = ProfessorDao::atualizar($professorBean);
+			if($retorno->status){//se tudo ocorreu bem
 				//redireciona
 				?>
 					<script>
-						alert('Aluno atualizado com sucesso!');
+						alert('Professor atualizado com sucesso!');
 						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
 					</script>
 				<?php
 			}else{
 				?>
 					<script>
-						alert('Erro ao atualizar aluno: <?= $retorno->resposta ?>');
+						alert('Erro ao atualizar professor: <?= $retorno->resposta ?>');
 						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
 					</script>
 				<?php
@@ -197,18 +209,18 @@
 			$matricula = $_DADOS['matricula'];//PK
 
 			//executa no banco
-			$retorno = AlunoDao::remover($matricula);
+			$retorno = ProfessorDao::remover($matricula);
 			if($retorno->status){//se tudo ocorreu bem
 				?>
 					<script>
-						alert('Aluno removido com sucesso!');
+						alert('Professor removido com sucesso!');
 						window.location.replace("../View/html5-boilerplate_v6.0.1/");
 					</script>
 				<?php
 			}else{
 				?>
 					<script>
-						alert('Erro ao remover aluno: <?= $retorno->resposta ?>');
+						alert('Erro ao remover professor: <?= $retorno->resposta ?>');
 						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
 					</script>
 				<?php
@@ -216,7 +228,7 @@
 			break;
 		case 'getAll':
 			//executa no banco
-			$retorno = AlunoDao::getAll();
+			$retorno = ProfessorDao::getAll();
 			if($retorno->status){//se tudo ocorreu bem
 				for ($i=0; $i < count($retorno->resposta); $i++) {
 					$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
@@ -232,7 +244,7 @@
 			$matricula = $_DADOS['matricula'];//PK
 
 			//executa no banco
-			$retorno = AlunoDao::get($matricula);
+			$retorno = ProfessorDao::get($matricula);
 			if($retorno->status){//se tudo ocorreu bem
 				$retorno->resposta[0]->Nome = utf8_encode($retorno->resposta[0]->Nome);
 				$retorno->resposta[0]->Cidade = utf8_encode($retorno->resposta[0]->Cidade);

@@ -9,7 +9,10 @@
 session_start();
 if(isset($_SESSION['logado'])){
 	$logado = $_SESSION['logado'];
-	$aluno = $_SESSION['aluno'];
+	if(isset($_SESSION['aluno']))
+		$aluno = $_SESSION['aluno'];
+	else
+		$professor = $_SESSION['professor'];
 }
 else{
 	$logado = false;//nao logado

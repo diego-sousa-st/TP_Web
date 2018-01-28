@@ -123,21 +123,5 @@
 			// die(print_r($retorno,true));
 			echo json_encode($retorno);
 			break;
-		case 'getInstituicoes':
-			//executa no banco
-			require_once("../Persistence/InstituicaoDao.class.php");
-			$retorno = InstituicaoDao::getAll();
-			if($retorno->status){//se tudo ocorreu bem
-				for ($i=0; $i < count($retorno->resposta); $i++) {
-					$retorno->resposta[$i]->Sigla = utf8_encode($retorno->resposta[$i]->Sigla);
-					$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
-					$retorno->resposta[$i]->Cidade = utf8_encode($retorno->resposta[$i]->Cidade);
-					$retorno->resposta[$i]->UF = utf8_encode($retorno->resposta[$i]->UF);
-					$retorno->resposta[$i]->Pais = utf8_encode($retorno->resposta[$i]->Pais);
-				}
-			}
-			// die(print_r($retorno,true));
-			echo json_encode($retorno);
-			break;
 	}
 ?>

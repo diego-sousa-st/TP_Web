@@ -23,7 +23,7 @@
         <div class="carousel-caption">
             <h1>Produza mais!</h1>
             <p>Nosso site oferece uma plataforma completa para gerenciamento de pesquisa</p>
-            <p><a class="btn btn-lg btn-success" href="./pags/telaLoginAluno.php" role="button">Faça Login</a></p>
+            <p><a class="btn btn-lg btn-success" href="./pags/telaLogin.php" role="button">Faça Login</a></p>
         </div>
         </div>
     </div>

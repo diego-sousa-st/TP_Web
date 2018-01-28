@@ -1,7 +1,7 @@
 <?php
 	include_once("../../../Controller/VerificaLogado.php");
-	if(!$logado){
-		header("Location: ../pags/telaLoginAluno.php");
+	if(!isset($professor)){
+		header("Location: ../pags/telaLogin.php");
 	}
 ?>
 <!DOCTYPE html>

@@ -15,11 +15,11 @@
 	switch($acao){
 		case 'cadastrar':
 			//ler dados
-			$sigla = $_POST['siglaPesquisa'];//PK
-			$nome = $_POST['nomeInstituicao'];
-			$cidade = $_POST['cidade'];
-			$uf = $_POST['uf'];
-			$pais = $_POST['pais'];
+			$sigla = $_DADOS['siglaPesquisa'];//PK
+			$nome = $_DADOS['nomeInstituicao'];
+			$cidade = $_DADOS['cidade'];
+			$uf = $_DADOS['uf'];
+			$pais = $_DADOS['pais'];
 
 			//criar bean
 			$instituicaoBean = new InstituicaoBean($sigla, $nome, $cidade, $uf, $pais);
@@ -45,11 +45,11 @@
 			break;
 		case 'atualizar':
 			//ler dados
-			$sigla = $_POST['siglaPesquisa'];//PK
-			$nome = $_POST['nomeInstituicao'];
-			$cidade = $_POST['cidade'];
-			$uf = $_POST['uf'];
-			$pais = $_POST['pais'];
+			$sigla = $_DADOS['siglaPesquisa'];//PK
+			$nome = $_DADOS['nomeInstituicao'];
+			$cidade = $_DADOS['cidade'];
+			$uf = $_DADOS['uf'];
+			$pais = $_DADOS['pais'];
 
 			//criar bean
 			$instituicaoBean = new InstituicaoBean($sigla, $nome, $cidade, $uf, $pais);
@@ -74,7 +74,7 @@
 			break;
 		case "remover":
 			//ler dados
-			$sigla = $_POST['siglaPesquisa'];//PK
+			$sigla = $_DADOS['siglaPesquisa'];//PK
 
 			//executa no banco
 			$retorno = InstituicaoDao::remover($sigla);
@@ -111,7 +111,7 @@
 			break;
 		case 'get':
 			//ler dados
-			$sigla = $_POST['siglaPesquisa'];//PK
+			$sigla = $_DADOS['siglaPesquisa'];//PK
 
 			//executa no banco
 			$retorno = InstituicaoDao::get($sigla);

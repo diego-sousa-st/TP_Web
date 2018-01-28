@@ -1,11 +1,11 @@
 $(document).ready(function () {
 	//carrega informacoes
-	getAlunos();
+	getInstituicoes();
 });
 
 //manda ajax assim q a pagina carregar para pegar as informacoes
-function getAlunos(){
-	var url = "../../../Controller/AlunoController.php";
+function getInstituicoes(){
+	var url = "../../../Controller/InstituicaoController.php";
 	//informacoes passadas para a url
 	var req = {
 		acao: 'getAll'
@@ -15,9 +15,9 @@ function getAlunos(){
 		if (res.status) {//deu certo
 			var options = "";
 			for (var i = 0; i < res.resposta.length; i++) {
-				options += "<option value='"+res.resposta[i].Matricula+"'>"+res.resposta[i].Nome+"</option>"
+				options += "<option value='"+res.resposta[i].Sigla+"'>"+res.resposta[i].Nome+"</option>"
 			}
-			$("#fk_aluno").html(options);
+			$("#instituicoes").html(options);
 		} else {
 			alert(res.resposta);
 		}

@@ -16,13 +16,13 @@
 	switch($acao){
 		case 'cadastrar':
 			//ler dados
-			$aluno = $_POST['fk_aluno'];
-			$professor = $_POST['professor'];
-			$tipo = $_POST['tipo'];
-			$tema = $_POST['tema'];
-			$inicio = $_POST['inicio'];
-			$fim = $_POST['fim'];
-			$cancelado = $_POST['cancelado'];
+			$aluno = $_DADOS['fk_aluno'];
+			$professor = $_DADOS['professor'];
+			$tipo = $_DADOS['tipo'];
+			$tema = $_DADOS['tema'];
+			$inicio = $_DADOS['inicio'];
+			$fim = $_DADOS['fim'];
+			$cancelado = $_DADOS['cancelado'];
 
 			//criar bean
 			$orientacaoBean = new OrientacaoBean("", $aluno, $professor, $tipo, $tema, $inicio, $fim, $cancelado);
@@ -47,14 +47,14 @@
 			break;
 		case 'atualizar':
 			//ler dados
-			$id = $_POST['id'];//PK
-			$aluno = $_POST['fk_aluno'];
-			$professor = $_POST['professor'];
-			$tipo = $_POST['tipo'];
-			$tema = $_POST['tema'];
-			$inicio = $_POST['inicio'];
-			$fim = $_POST['fim'];
-			$cancelado = $_POST['cancelado'];
+			$id = $_DADOS['id'];//PK
+			$aluno = $_DADOS['fk_aluno'];
+			$professor = $_DADOS['professor'];
+			$tipo = $_DADOS['tipo'];
+			$tema = $_DADOS['tema'];
+			$inicio = $_DADOS['inicio'];
+			$fim = $_DADOS['fim'];
+			$cancelado = $_DADOS['cancelado'];
 
 			//criar bean
 			$orientacaoBean = new OrientacaoBean($id, $aluno, $professor, $tipo, $tema, $inicio, $fim, $cancelado);
@@ -79,7 +79,7 @@
 			break;
 		case "remover":
 			//ler dados
-			$id = $_POST['id'];//PK
+			$id = $_DADOS['id'];//PK
 
 			//executa no banco
 			$retorno = OrientacaoDao::remover($id);
@@ -116,7 +116,7 @@
 			break;
 		case 'get':
 			//ler dados
-			$id = $_POST['id'];//PK
+			$id = $_DADOS['id'];//PK
 
 			//executa no banco
 			$retorno = OrientacaoDao::get($id);
@@ -126,20 +126,6 @@
 				$retorno->resposta[0]->Inicio = utf8_encode($retorno->resposta[0]->Inicio);
 				$retorno->resposta[0]->Fim = utf8_encode($retorno->resposta[0]->Fim);
 				$retorno->resposta[0]->Cancelado = utf8_encode($retorno->resposta[0]->Cancelado);
-			}
-			// die(print_r($retorno,true));
-			echo json_encode($retorno);
-			break;
-		case 'getAlunos':
-			//executa no banco
-			require_once("../Persistence/AlunoDao.class.php");
-			$retorno = AlunoDao::getAll();
-			if($retorno->status){//se tudo ocorreu bem
-				for ($i=0; $i < count($retorno->resposta); $i++) {
-					$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
-					$retorno->resposta[$i]->Cidade = utf8_encode($retorno->resposta[$i]->Cidade);
-					$retorno->resposta[$i]->UF = utf8_encode($retorno->resposta[$i]->UF);
-				}
 			}
 			// die(print_r($retorno,true));
 			echo json_encode($retorno);

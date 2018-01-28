@@ -16,9 +16,9 @@
 	switch($acao){
 		case 'cadastrar':
 			//ler dados
-			$professor = $_POST['professor'];
-			$area = $_POST['area'];
-			$linha = $_POST['linhaPesquisa'];
+			$professor = $_DADOS['professor'];
+			$area = $_DADOS['area'];
+			$linha = $_DADOS['linhaPesquisa'];
 
 			//criar bean
 			$pesquisaBean = new PesquisaBean($professor, $area, $linha);
@@ -43,9 +43,9 @@
 			break;
 		case "remover":
 			//ler dados
-			$professor = $_POST['professor'];
-			$area = $_POST['area'];
-			$linha = $_POST['linhaPesquisa'];
+			$professor = $_DADOS['professor'];
+			$area = $_DADOS['area'];
+			$linha = $_DADOS['linhaPesquisa'];
 
 			//criar bean
 			$pesquisaBean = new PesquisaBean($professor, $area, $linha);
@@ -81,7 +81,7 @@
 			break;
 		case 'get':
 			//ler dados
-			$professor = $_POST['professor'];
+			$professor = $_DADOS['professor'];
 
 			//executa no banco
 			$retorno = PesquisaDao::get($professor);

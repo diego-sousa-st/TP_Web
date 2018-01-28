@@ -9,7 +9,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>Cadastro</title>
+		<title>Login</title>
 		<meta name="description" content="Sistema de Gerenciamento de Orientações, Pesquisa etc.">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,10 +29,8 @@
 
 		<!-- carregamento modernizr-3 -->
 		<script src="../js/vendor/modernizr-3.5.0.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="../js/telaCadastroAluno.js"></script>
-		<!-- validacao senha -->
-		<script src="../js/validacao.js"></script>
+
+		<script src="../js/telaLogin.js"></script>
 	</head>
 	<body>
 		<!--[if lte IE 9]>
@@ -44,83 +42,57 @@
 
 		<div class="container">
 			<div class="page-header">
-				<h1>Cadastre-se para utilizar o sistema</h1>
+				<h1>Faça login para utilizar o sistema</h1>
 			</div>
 
 			<div class="row">
-				<form action="../../../Controller/AlunoController.php" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="acao" value="cadastrar">
-					<div class="col-md-4">
-						<h3>Cadastro Aluno</h3>
-
+				<form action="../../../Controller/AlunoController.php" method="post" id="formCadastro">
+					<input type="hidden" name="acao" value="logar">
+					<div class="col-md-6">
+						<h3>Logar</h3>
 						<div class="form-group">
-							<label for="nome">Nome</label>
-							<input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome...">
-						</div>
-
-						<div class="form-group">
-							<label for="matricula">Matricula</label>
-							<input type="number" class="form-control" name="matricula" id="matricula" placeholder="Digite sua matricula..."
+							<label for="login" id="loginLabel">Matrícula</label>
+							<input type="number" class="form-control" name="loginAluno" id="loginAluno" placeholder="Digite sua matricula..."
 							min="0" max="999999999">
+							<input type="email" class="form-control" name="loginProf" id="loginProf" placeholder="Digite seu email..." maxlength="45" style="display:none">
 						</div>
 
 						<div class="form-group">
-							<label for="cidade">Cidade</label>
-							<input type="text" class="form-control" name="cidade" id="cidade" placeholder="Digite o nome da sua cidade...">
-						</div>
-
-						<div class="form-group">
-							<label for="uf">UF</label>
-							<!-- <input type="text" class="form-control" name="uf" id="uf" placeholder="Digite seu estado"> -->
-							<select name="uf" class="form-control" id="uf">
-								<option value="MG">MG</option>
-								<option value="SP">SP</option>
-								<option value="ES">ES</option>
-								<option value="RJ">RJ</option>
-							</select>
-						</div>
-
-						<div class="form-group">
-							<label for="curso">Curso</label>
-							<select class="form-control" name="curso" id="curso">
-
-							</select>
-							<!-- <input type="number" class="form-control" name="curso" id="curso" placeholder="Digite o numero do curso..."> -->
-						</div>
-
-						<div class="form-group" id="formSenha">
 							<label for="senha">Senha</label>
 							<input type="password" class="form-control" name="senha" id="senha" placeholder="Digite sua senha...">
 						</div>
 
-						<div class="form-group" id="formRedigiteSenha">
-							<label for="redigiteSenha">Repita a Senha</label>
-							<input type="password" class="form-control" name="redigiteSenha" id="redigiteSenha" placeholder="Redigite sua senha...">
-						</div>
-
-						<div class="form-group" id="formImagem">
-							<label for="imagem">Imagem de Perfil:</label>
-							<input type="file" name="imagem" id="imagem" value="Procurar Imagem">
-						</div>
-
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary">
-							Cadastrar
-							</button>
+							<span class="btn btn-danger" id="btnProf" onclick="trocaProf();">
+							Professor
+							</span>
+						</div>
+						<div class="form-group">
+							<span class="btn btn-primary" onclick="logar();">
+							Logar
+							</span>
 						</div>
 					</div>
 				</form>
+
+				<aside class="col-md-5">
+					<blockquote>
+  						<p>Não tem cadastro aluno! <strong> <a href="./telaCadastroAluno.php">Faça agora!</a></strong></p>
+  						<p>Não tem cadastro professor! <strong> <a href="./telaCadastroProfessor.php">Faça agora!</a></strong></p>
+					</blockquote>
+				</aside>
 			</div>
 
 		</div>
 
 		<div class="container col-md-12">
+			<div class="space">
+
+			</div>
 			<?php
-				include_once("./Templates/rodape.php");
-			?>
+            	include_once("./Templates/rodape.php");
+        	?>
 		</div>
-
-
 
 
 		<!-- fim area site -->
