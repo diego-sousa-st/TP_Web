@@ -106,7 +106,14 @@
 					$_SESSION['aluno'] = $matricula;
 
 					//redireciona
-					header('Location: ../View/html5-boilerplate_v6.0.1/');
+					?>
+						<script>
+							localStorage.setItem("matricula", "<?= $_SESSION['aluno'] ?>");
+							localStorage.setItem("professor", "");
+							localStorage.setItem("entrou", "<?= date("Y-m-d H:i:s") ?>");
+							window.location.replace("../View/html5-boilerplate_v6.0.1/");
+						</script>
+					<?php
 				}else{//se o usuario nao existe
 					?>
 						<script>
@@ -268,6 +275,16 @@
 			//executa no banco
 			$retorno = AlunoDao::atualizarNaTabela($alunoBean);
 			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
+		case 'salvarLog':
+			//ler dados
+			$id = $_DADOS['id'];//PK
+			$entrou = $_DADOS['entrou'];
+			$saiu = $_DADOS['saiu'];
+
+			//executa no banco
+			$retorno = ProfessorDao::salvarLog($id,$entrou,$saiu);
 			echo json_encode($retorno);
 			break;
 	}

@@ -78,5 +78,14 @@
 			//executa
 			return ProcessaQuery::consultarQuery($query);
 		}
+
+		public static function salvarLog($id,$entrou,$saiu){
+			//cria a query
+			$query = "UPDATE Professor SET entrou = '{$entrou}', saiu = '{$saiu}' WHERE ID = {$id};";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::executarQuery($query);
+		}
 	}
 ?>

@@ -89,7 +89,7 @@
 						</div>
 
 						<div class="form-group" id="formImagem">
-							<label for="senhaProf">Senha para cadastrar professor:</label>
+							<label for="senhaProf">Senha para cadastrar professor:(Senha: RamonLegal)</label>
 							<input type="password" class="form-control" name="senhaProf" id="senhaProf" placeholder="Digite a senha para cadastrar professor...">
 						</div>
 

@@ -117,7 +117,14 @@
 					$_SESSION['professor'] = $retorno->resposta[0]->ID;
 
 					//redireciona
-					header('Location: ../View/html5-boilerplate_v6.0.1/');
+					?>
+						<script>
+							localStorage.setItem("id", "<?= $_SESSION['professor'] ?>");
+							localStorage.setItem("matricula", "");
+							localStorage.setItem("entrou", "<?= date("d/m/Y H:i:s") ?>");
+							window.location.replace("../View/html5-boilerplate_v6.0.1/");
+						</script>
+					<?php
 				}else{//se o usuario nao existe
 					?>
 						<script>
@@ -263,6 +270,16 @@
 				$retorno->resposta[0]->imagemProfessor = utf8_encode($retorno->resposta[0]->imagemProfessor);
 			}
 			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
+		case 'salvarLog':
+			//ler dados
+			$id = $_DADOS['id'];//PK
+			$entrou = $_DADOS['entrou'];
+			$saiu = $_DADOS['saiu'];
+
+			//executa no banco
+			$retorno = ProfessorDao::salvarLog($id,$entrou,$saiu);
 			echo json_encode($retorno);
 			break;
 	}

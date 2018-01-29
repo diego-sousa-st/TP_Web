@@ -85,5 +85,14 @@
 			//executa
 			return ProcessaQuery::executarQuery($query);
 		}
+
+		public static function salvarLog($id,$entrou,$saiu){
+			//cria a query
+			$query = "UPDATE Aluno SET entrou = '{$entrou}', saiu = '{$saiu}' WHERE Matricula = {$id};";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::executarQuery($query);
+		}
 	}
 ?>
