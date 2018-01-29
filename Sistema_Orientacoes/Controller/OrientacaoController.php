@@ -48,7 +48,7 @@
 		case 'atualizar':
 			//ler dados
 			$id = $_DADOS['id'];//PK
-			$aluno = $_DADOS['fk_aluno'];
+			$aluno = $_DADOS['aluno'];
 			$professor = $_DADOS['professor'];
 			$tipo = $_DADOS['tipo'];
 			$tema = $_DADOS['tema'];
@@ -61,21 +61,7 @@
 
 			//executa no banco
 			$retorno = OrientacaoDao::atualizar($orientacaoBean);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Orientação atualizada com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao atualizar orientação: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
-			}
+			echo json_encode($retorno);
 			break;
 		case "remover":
 			//ler dados
@@ -83,21 +69,7 @@
 
 			//executa no banco
 			$retorno = OrientacaoDao::remover($id);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Orientação removida com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao remover orientação: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
-			}
+			echo json_encode($retorno);
 			break;
 		case 'getAll':
 			//executa no banco
