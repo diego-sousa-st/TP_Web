@@ -87,5 +87,14 @@
 			// die(print_r($retorno,true));
 			echo json_encode($retorno);
 			break;
+		case 'getGrafico':
+			//executa no banco
+			$retorno = PesquisaDao::getGrafico();
+			for ($i=0; $i < count($retorno->resposta); $i++) {
+				$retorno->resposta[$i]->Nome = utf8_encode($retorno->resposta[$i]->Nome);
+			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
+			break;
 	}
 ?>

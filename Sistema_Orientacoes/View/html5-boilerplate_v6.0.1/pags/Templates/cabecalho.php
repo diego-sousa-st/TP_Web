@@ -10,6 +10,7 @@
 		<ul class="nav navbar-nav navbar-right">
 		<li><a href="pags/telaPerfil.php">Visualizar Perfil</a></li>
 		<li><a href="pags/telaAlterarPerfil.php">Alterar Perfil</a></li>
+		<li><a href="pags/telaGrafico.php">Gráfico</a></li>
 		<li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Listar<span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<!-- <li><a href="pags/telaListarProfessores.php">Professores</a></li> -->

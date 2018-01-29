@@ -51,5 +51,15 @@
 			//executa
 			return ProcessaQuery::consultarQuery($query);
 		}
+
+		//Conecta com o banco e pega infs
+		public static function getGrafico(){
+			//cria a query
+			$query = "SELECT Nome,COUNT(*) AS qnt FROM Pesquisa INNER JOIN Professor ON Pesquisa.Professor = Professor.ID GROUP BY Professor.ID;";
+
+			//die(print_r($query,true));
+			//executa
+			return ProcessaQuery::consultarQuery($query);
+		}
 	}
 ?>
