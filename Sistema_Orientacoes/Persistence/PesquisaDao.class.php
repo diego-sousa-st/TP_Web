@@ -12,19 +12,6 @@
 			return ProcessaQuery::executarQuery($query);
 		}
 
-		// //Conecta com o banco e atualiza o obj
-		// public static function atualizar($bean){
-		// 	//cria a query
-		// 	$query = "UPDATE Pesquisa SET
-		// 			Area = {$bean->getArea()},
-		// 			Linha = '{$bean->getLinha()}'
-		// 			WHERE ID = {$bean->getId()};";
-        //
-		// 	//die(print_r($query,true));
-		// 	//executa
-		// 	return ProcessaQuery::executarQuery($query);
-		// }
-
 		//Conecta com o banco e remove o obj pela pk
 		public static function remover($bean){
 			//cria a query

@@ -45,28 +45,15 @@
 			//ler dados
 			$professor = $_DADOS['professor'];
 			$area = $_DADOS['area'];
-			$linha = $_DADOS['linhaPesquisa'];
+			$linha = $_DADOS['linha'];
 
 			//criar bean
 			$pesquisaBean = new PesquisaBean($professor, $area, $linha);
 
 			//executa no banco
 			$retorno = PesquisaDao::remover($pesquisaBean);
-			if($retorno->status){//se tudo ocorreu bem
-				?>
-					<script>
-						alert('Pesquisa removida com sucesso!');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/");//arrumar
-					</script>
-				<?php
-			}else{
-				?>
-					<script>
-						alert('Erro ao remover pesquisa: <?= $retorno->resposta ?>');
-						window.location.replace("../View/html5-boilerplate_v6.0.1/pags/telaPerfil.php");//arrumar
-					</script>
-				<?php
-			}
+			// die(print_r($retorno,true));
+			echo json_encode($retorno);
 			break;
 		case 'getAll':
 			//executa no banco

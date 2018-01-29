@@ -12,8 +12,8 @@
 		<li><a href="pags/telaAlterarPerfil.php">Alterar Perfil</a></li>
 		<li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Listar<span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="pags/telaCadastroOrientacao.php">Professores</a></li>
-				<li><a href="pags/telaCadastroCurso.php">Pesquisas</a></li>
+				<!-- <li><a href="pags/telaListarProfessores.php">Professores</a></li> -->
+				<li><a href="pags/telaListarPesquisas.php">Pesquisas</a></li>
 				<li><a href="pags/telaListarCursos.php">Cursos</a></li>
 				<li><a href="pags/telaListarInstituicoes.php">Instituições</a></li>
 				<li><a href="pags/telaListarOrientacoes.php">Orientações</a></li>
