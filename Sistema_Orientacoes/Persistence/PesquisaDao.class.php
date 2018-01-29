@@ -7,7 +7,7 @@
 			//cria a query
 			$query = "INSERT INTO Pesquisa (Professor, Area, Linha) VALUES ({$bean->getProfessor()},{$bean->getArea()},'{$bean->getLinha()}');";
 
-			//die(print_r($query,true));
+			// die(print_r($query,true));
 			//executa
 			return ProcessaQuery::executarQuery($query);
 		}

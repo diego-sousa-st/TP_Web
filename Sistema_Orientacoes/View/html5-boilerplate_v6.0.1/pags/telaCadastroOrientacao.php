@@ -66,6 +66,7 @@
 	  </div>
 	  <form id="formCadastroOrientacao" action="../../../Controller/OrientacaoController.php" class="col-md-8" method="post">
 		  <input type="hidden" name="acao" value="cadastrar">
+		  <input type="hidden" name="professor" value="<?= $professor ?>">
 		<div class="form-group">
 		  <label for="fk_aluno">Aluno:</label>
 		  <!-- carregar os alunos disponiveis do banco e colocar nos options do select-->
